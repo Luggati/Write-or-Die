@@ -1,15 +1,9 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
-#
-
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Rr]ecordings/
+Library/
+Temp/
+Build/
+Recordings/
+obj
 Assembly-CSharp.csproj
-
 *.sln
 *.csproj
 .vs/
