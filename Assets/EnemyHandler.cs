@@ -8,7 +8,7 @@ public class EnemyHandler : MonoBehaviour
     public GameObject enemys;
     public float spawnrate = 2;
     private float timer = 0;
-    public float heightoffset = 2; 
+    public float heightoffset = 3; 
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,6 @@ public class EnemyHandler : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightoffset;
         float highestPoint = transform.position.y + heightoffset;
-        Instantiate(enemys, new Vector3(transform.position.x,Random.Range(lowestPoint,highestPoint),0), transform.rotation);
+        Instantiate(enemys, new Vector3(transform.position.x,Random.Range(lowestPoint,highestPoint),0,);
     }
 }
