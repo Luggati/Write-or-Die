@@ -25,7 +25,8 @@ public class GunScript : MonoBehaviour
         GameObject newShot = Instantiate(shot) as GameObject;
         Debug.Log("Fire");
         newShot.transform.position = transform.position;
-        newShot.transform.Rotate(direction);
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        newShot.transform.rotation = rotation;
         newShot.GetComponent<ShotScript>().SetShotDirection(direction);
     }
 
@@ -34,7 +35,9 @@ public class GunScript : MonoBehaviour
     {
         if (Event.current.Equals(Event.KeyboardEvent("f")))
         {
-            Fire(new Vector3(10, 2, 0));
+            GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
+            Fire(new Vector3(5,5,0));
+            Fire(enemy[Random.Range(0,enemy.Length)].transform.position);
         }
     }
 }

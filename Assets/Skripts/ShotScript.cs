@@ -6,7 +6,7 @@ public class ShotScript : MonoBehaviour
 {
 
     Vector3 shotDirection;
-    int velocity = 10;
+    int velocity = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +17,23 @@ public class ShotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         transform.position += shotDirection * velocity * Time.deltaTime;
+
+        Vector3 pos = transform.position;
+        if (pos.x < -28 || pos.x > 28 || pos.y < -15 || pos.y > 15)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetShotDirection(Vector3 newShotDirection)
     {
         shotDirection = newShotDirection;
+    }
+
+    void DestroyShot()
+    {
+        Destroy(gameObject);
     }
 }

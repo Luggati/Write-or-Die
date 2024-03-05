@@ -21,14 +21,14 @@ public class EnemyBehavoir : MonoBehaviour
     {
         transform.position = transform.position + (Vector3.left * movespeed) * Time.deltaTime;
         SetTextPos();
-    }
-    public void DestroyIfMatches(char inputName)
-    {
-        if (inputName == null)
+
+        Vector3 pos = transform.position;
+        if (pos.x < -28 || pos.x > 28 || pos.y < -15 || pos.y > 15)
         {
             Destroy(gameObject);
         }
     }
+ 
     private char GetRandomLetter()
     {
         // Verwende ASCII-Werte für Großbuchstaben (65-90)
@@ -40,7 +40,6 @@ public class EnemyBehavoir : MonoBehaviour
     {
         char randomLetter = GetRandomLetter();
         textname.text = randomLetter.ToString();
-        print("randomname geht");
         //Vector3 namePosition = transform.position;
         //namePosition.y -= GetComponent<Renderer>().bounds.extents.y; // Platzieren Sie den Namen am unteren Rand des Gegners
         //textname.transform.position = namePosition;
