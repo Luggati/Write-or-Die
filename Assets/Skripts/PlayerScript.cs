@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    int health = 2;
+    int health = 3;
     public GameObject deathScreen;
 
     // Start is called before the first frame update
