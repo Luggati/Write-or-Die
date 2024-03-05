@@ -32,6 +32,6 @@ public class EnemyHandler : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightoffset;
         float highestPoint = transform.position.y + heightoffset;
-        Instantiate(enemys, new Vector3(transform.position.x,Random.Range(lowestPoint,highestPoint),0,);
+        Instantiate(enemys, new Vector3(transform.position.x,Random.Range(lowestPoint,highestPoint),0), transform.rotation);
     }
 }
