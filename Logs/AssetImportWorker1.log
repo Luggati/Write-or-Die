@@ -3133,3 +3133,207 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.434 seconds
+Refreshing native plugins compatible for Editor in 5.85 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.185 seconds
+Domain Reload Profiling: 1614ms
+	BeginReloadAssembly (159ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (204ms)
+		LoadAssemblies (280ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (9ms)
+			TypeCache.Refresh (4ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1185ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (503ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (131ms)
+			ProcessInitializeOnLoadAttributes (312ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (15ms)
+Refreshing native plugins compatible for Editor in 6.37 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4020 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 36 unused Assets / (35.6 KB). Loaded Objects now: 4689.
+Memory consumption went from 233.5 MB to 233.4 MB.
+Total: 3.567600 ms (FindLiveObjects: 0.396500 ms CreateObjectMapping: 0.219700 ms MarkObjects: 2.888500 ms  DeleteObjects: 0.061600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2779.818227 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Boss_1_B_Medium.png
+  artifactKey: Guid(6e84bdafa53058c4dbe39d87e2ff06b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Boss_1_B_Medium.png using Guid(6e84bdafa53058c4dbe39d87e2ff06b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f0fd99e3e23cb048af36122bda55cef') in 0.074421 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_2_A_Medium.png
+  artifactKey: Guid(eb8b99d099fd5f240b682944aa0f0b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_2_A_Medium.png using Guid(eb8b99d099fd5f240b682944aa0f0b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e3c8ea3a182548d8396a1faa7a918ca') in 0.019258 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_1_A_Medium.png
+  artifactKey: Guid(2da3afa9b3caa7741be2ecab49e750e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_1_A_Medium.png using Guid(2da3afa9b3caa7741be2ecab49e750e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e7e6c2784aec7f86b88c0790c075a4') in 0.025110 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_3_A_Medium.png
+  artifactKey: Guid(6bd63e8333d78fc4ba7fba0a77b916f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_3_A_Medium.png using Guid(6bd63e8333d78fc4ba7fba0a77b916f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c56c278ad46612eff42fdb0bfaedce7') in 0.023363 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Missile_A_Medium.png
+  artifactKey: Guid(4938d4fb12553d34995be6aeca3118e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Missile_A_Medium.png using Guid(4938d4fb12553d34995be6aeca3118e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a0bb8df6434e50bcd7372ccde09dbd1') in 0.020428 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_1_D_Medium.png
+  artifactKey: Guid(73e2bbb1a5116924abf0a2bd87976b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Enemy_1_D_Medium.png using Guid(73e2bbb1a5116924abf0a2bd87976b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52c8406ae2edf81d20e4922821bfcffe') in 0.021024 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.547896 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Missile_C_Medium.png
+  artifactKey: Guid(3c3875f2a29db15409577e3d7db63718) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Missile_C_Medium.png using Guid(3c3875f2a29db15409577e3d7db63718) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a772acd13a46651565856ee766107ffa') in 0.022182 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.307027 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Pickup_1_B_Medium.png
+  artifactKey: Guid(fc9311d8abea8db47ad2745b9bbb53bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Pickup_1_B_Medium.png using Guid(fc9311d8abea8db47ad2745b9bbb53bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc157602ce7bd36197bad24adbd7b820') in 0.022220 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 4.464402 seconds.
+  path: Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Pickup_1_D_Medium.png
+  artifactKey: Guid(822f5e557cfa3a1488f3c60eac3b9574) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Stylized 2D Space Shooter - Free/Sprites/Medium/Pickup_1_D_Medium.png using Guid(822f5e557cfa3a1488f3c60eac3b9574) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cecf85b213800b889313dadf91870a4') in 0.024605 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.448 seconds
+Refreshing native plugins compatible for Editor in 5.85 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.071 seconds
+Domain Reload Profiling: 1515ms
+	BeginReloadAssembly (147ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (30ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (225ms)
+		LoadAssemblies (294ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (11ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1071ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (437ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (84ms)
+			ProcessInitializeOnLoadAttributes (295ms)
+			ProcessInitializeOnLoadMethodAttributes (34ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Refreshing native plugins compatible for Editor in 6.40 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4019 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 36 unused Assets / (35.6 KB). Loaded Objects now: 4693.
+Memory consumption went from 235.1 MB to 235.1 MB.
+Total: 3.490700 ms (FindLiveObjects: 0.501500 ms CreateObjectMapping: 0.225500 ms MarkObjects: 2.712400 ms  DeleteObjects: 0.050300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
