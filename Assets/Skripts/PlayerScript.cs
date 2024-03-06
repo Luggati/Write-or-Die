@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     int health = 3;
-    public GameObject deathScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -25,20 +24,11 @@ public class PlayerScript : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             health--;
-            if (health <= 0)
-            {
-                showDeathScreen();
-            }
         }
     }
 
     public int GetHealth()
     {
         return health;
-    }
-
-    void showDeathScreen()
-    {
-        deathScreen.SetActive(true);
     }
 }
