@@ -6,7 +6,7 @@ public class ShotScript : MonoBehaviour
 {
 
     Vector3 shotDirection;
-    int velocity = 50;
+    int velocity = 40;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +32,4 @@ public class ShotScript : MonoBehaviour
         shotDirection = newShotDirection;
     }
 
-    void DestroyShot()
-    {
-        Destroy(gameObject);
-    }
 }

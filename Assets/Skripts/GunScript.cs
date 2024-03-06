@@ -36,7 +36,7 @@ public class GunScript : MonoBehaviour
         if (Event.current.Equals(Event.KeyboardEvent("f")))
         {
             GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
-            Fire(new Vector3(5,5,0));
+            Fire(new Vector3(10,10,0));
             Fire(enemy[Random.Range(0,enemy.Length)].transform.position);
         }
     }
