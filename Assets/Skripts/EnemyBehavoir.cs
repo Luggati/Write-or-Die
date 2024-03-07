@@ -13,14 +13,14 @@ public class EnemyBehavoir : MonoBehaviour
     void Start()
     {
         SetRandomName();
-        SetTextPos();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = transform.position + (Vector3.left * movespeed) * Time.deltaTime;
-        SetTextPos();
+        
 
         Vector3 pos = transform.position;
         if (pos.x < -28 || pos.x > 28 || pos.y < -15 || pos.y > 15)
@@ -40,16 +40,15 @@ public class EnemyBehavoir : MonoBehaviour
     {
         char randomLetter = GetRandomLetter();
         textname.text = randomLetter.ToString();
-        //Vector3 namePosition = transform.position;
-        //namePosition.y -= GetComponent<Renderer>().bounds.extents.y; // Platzieren Sie den Namen am unteren Rand des Gegners
-        //textname.transform.position = namePosition;
-    }
-    public void SetTextPos()
-    {
-        if (textname != null)
+        for (int i = 0; i < 4; i++)
         {
-            textname.transform.position = transform.position;
+            if (Random.Range(0, 2) == 0)
+            {
+                char letter = GetRandomLetter();
+                textname.text = textname.text + letter.ToString();
+            }
         }
     }
+  
 
 }

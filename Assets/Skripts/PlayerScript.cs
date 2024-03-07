@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    int health = 3;
+
+    public GameObject logicScript;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,7 @@ public class PlayerScript : MonoBehaviour
 
         if (col.gameObject.CompareTag("Enemy"))
         {
-            health--;
+            logicScript.GetComponent<LogicScript>().DecreaseHealth();
         }
-    }
-
-    public int GetHealth()
-    {
-        return health;
     }
 }

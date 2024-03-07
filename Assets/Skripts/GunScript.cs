@@ -21,6 +21,7 @@ public class GunScript : MonoBehaviour
 
     public void Fire(Vector3 enemyPos)
     {
+
         Vector3 direction = Vector3.Normalize(enemyPos - transform.position);
         GameObject newShot = Instantiate(shot) as GameObject;
         Debug.Log("Fire");
@@ -30,6 +31,7 @@ public class GunScript : MonoBehaviour
         newShot.GetComponent<ShotScript>().SetShotDirection(direction);
     }
 
+    /*
     //Key Listener
     void OnGUI()
     {
@@ -40,4 +42,5 @@ public class GunScript : MonoBehaviour
             Fire(enemy[Random.Range(0,enemy.Length)].transform.position);
         }
     }
+    */
 }

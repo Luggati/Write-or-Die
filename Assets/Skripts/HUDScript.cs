@@ -9,7 +9,7 @@ public class HUDScript : MonoBehaviour
 {
 
     public Text lifeCounter;
-    public GameObject player;
+    public GameObject logicScript;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,7 @@ public class HUDScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        lifeCounter.text = "Leben: " + player.GetComponent<PlayerScript>().GetHealth();
-        
-
+        lifeCounter.text = "Leben: " + logicScript.GetComponent<LogicScript>().GetHealth();
     }
 
 
