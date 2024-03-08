@@ -34,6 +34,8 @@ public class UiSettings : MonoBehaviour
             ChangeColor(Color.red, textFields);
         }
 
+        
+
     }
 
     // Update is called once per frame

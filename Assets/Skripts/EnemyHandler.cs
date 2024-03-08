@@ -7,14 +7,18 @@ using UnityEngine.VFX;
 public class EnemyHandler : MonoBehaviour
 {
     public GameObject enemys;
-    public float spawnrate = 2;
-    private float timer = 0;
-    public float heightoffset = 3;
     public InputField inputField;
     public GameObject gun;
+    public GameObject logicScript;
+
+    public float spawnrate = 2;
+    private float timer = 0;
+    float spawnOffset = 14;
+    
     // Start is called before the first frame update
     void Start()
     {
+        inputField.text = "";
         spawnEnemy();
         inputField.onEndEdit.AddListener(value => {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -54,8 +58,8 @@ public class EnemyHandler : MonoBehaviour
     }
     public void spawnEnemy()
     {
-        float lowestPoint = transform.position.y - heightoffset;
-        float highestPoint = transform.position.y + heightoffset;
+        float lowestPoint = transform.position.y - spawnOffset;
+        float highestPoint = transform.position.y + spawnOffset;
 
         GameObject enemy = Instantiate(enemys, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), Quaternion.identity);
         enemy.transform.up = -transform.right;
@@ -72,12 +76,20 @@ public class EnemyHandler : MonoBehaviour
             // Vergleiche den User-Input mit jedem Gegner-Wort
             if (userInput.Equals(enemy.textname.text, System.StringComparison.OrdinalIgnoreCase))
             {
-                gun.GetComponent<GunScript>().Fire(Vector3.Normalize(enemy.transform.position - gun.transform.position));
+                gun.GetComponent<GunScript>().Fire(enemy.transform.position);
+                /*
+                 // Füge einen Punkt zum Score hinzu
                 Destroy(enemy.gameObject); // Zerstöre den Gegner, wenn das Wort übereinstimmt
-
+                */
                 inputField.text = ""; // Lösche das InputField für die nächste Eingabe
                 return; // Beende die Schleife, da das Wort gefunden wurde
             }
         }
+    }
+
+    public void Hit(GameObject enemy)
+    {
+        logicScript.GetComponent<LogicScript>().IncreaseScore(1);
+        Destroy(enemy);
     }
 }

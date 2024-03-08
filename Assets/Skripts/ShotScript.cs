@@ -6,7 +6,7 @@ public class ShotScript : MonoBehaviour
 {
 
     Vector3 shotDirection;
-    int velocity = 40;
+    int velocity = 70;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,15 @@ public class ShotScript : MonoBehaviour
     public void SetShotDirection(Vector3 newShotDirection)
     {
         shotDirection = newShotDirection;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            GameObject.Find("EnemyHandler").GetComponent<EnemyHandler>().Hit(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
 }

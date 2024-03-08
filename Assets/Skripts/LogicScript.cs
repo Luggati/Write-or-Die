@@ -10,7 +10,8 @@ public class LogicScript : MonoBehaviour
     bool isDead = false;
     bool isPaused = false;
     int leben = 3;
-    public string scoreboard = "500  Player1 \n320 Player2";
+    int currentScore = 0;
+    string scoreboard = "1000 Director Fury \n 604 Phil Collins \n 234 Anonymous";
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +79,21 @@ public class LogicScript : MonoBehaviour
     public int GetHealth()
     {
         return leben;
+    }
+
+    public string GetScoreboard()
+    {
+        return scoreboard;
+    }
+
+    public void IncreaseScore(int score)
+    {
+        currentScore += score;
+    }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
     }
 
 }

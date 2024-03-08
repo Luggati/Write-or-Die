@@ -24,7 +24,6 @@ public class GunScript : MonoBehaviour
 
         Vector3 direction = Vector3.Normalize(enemyPos - transform.position);
         GameObject newShot = Instantiate(shot) as GameObject;
-        Debug.Log("Fire");
         newShot.transform.position = transform.position;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         newShot.transform.rotation = rotation;
