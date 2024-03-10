@@ -97,7 +97,7 @@ public class LogicScript : MonoBehaviour
                         
                     }
                     break;
-                case "lang":
+                case "language":
                     if (inputPieces.Length == 2 && menu.activeSelf == true)
                     {
                         if (inputPieces[1].Equals("de") || inputPieces[1].Equals("en"))
@@ -133,17 +133,23 @@ public class LogicScript : MonoBehaviour
         prohibitedWords.Add("resume");
         prohibitedWords.Add("volume");
         prohibitedWords.Add("color");
-        prohibitedWords.Add("lang");
+        prohibitedWords.Add("language");
     }
 
 
     void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        EnemyBehavoir enemys = FindObjectOfType<EnemyBehavoir>();
+        foreach (EnemyBehavoir enemy in FindObjectsOfType<EnemyBehavoir>())
+        {
+            Destroy(enemy.gameObject);
+        }
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathScreen.SetActive(false);
         currentScore = 0;
         Health = 3;
         isDead = false;
-        UnPause();
+        ToggleMenu(false);
     }
 
     void ToggleMenu(bool enableMenu)

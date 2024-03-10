@@ -72,7 +72,7 @@ public class HUDScript : MonoBehaviour
 
         Color color = uiScript.GetComponent<UiSettings>().GetActiveColor();
         string lang = logicScript.GetComponent<LogicScript>().GetLanguage();
-        menuCommands.text = string.Format("Volume: {0} \n \"volume 100\" \n \n Textcolor: {1} {2} {3} \n \"color 255 255 255\" \n \n Enemy Words Language: {4} \n \"lang [de,en]\"", AudioListener.volume * 100, (int) color.r*255, (int)color.g * 255, (int)color.b * 255, lang);
+        menuCommands.text = string.Format("Volume: {0} \n \"volume 100\" \n \n Textcolor: {1} {2} {3} \n \"color 255 255 255\" \n \n Enemy Words Language: {4} \n \"language [de,en]\"", AudioListener.volume * 100, (int) color.r*255, (int)color.g * 255, (int)color.b * 255, lang);
     }
 
 }

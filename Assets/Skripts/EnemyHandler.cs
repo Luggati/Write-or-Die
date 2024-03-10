@@ -13,14 +13,14 @@ public class EnemyHandler : MonoBehaviour
     public GameObject utils;
 
     public float spawnrate = 2;
-    private float timer = 0;
+    private float timer = 3;
     float spawnOffset = 14;
     
     // Start is called before the first frame update
     void Start()
     {
         inputField.text = "";
-        spawnEnemy();
+        //spawnEnemy();
         inputField.ActivateInputField();
 
     }
