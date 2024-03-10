@@ -1,0 +1,332 @@
+Using pre-set license
+Built from '2022.3/release' branch; Version is '2022.3.20f1 (61c2feb0970d) revision 6406910'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'de' Physical Memory: 32694 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker5
+-projectPath
+C:/Users/pi-j/Documents/Jan-Phillipp/Projekte/Unity/Write-or-Die
+-logFile
+Logs/AssetImportWorker5.log
+-srvPort
+50024
+Successfully changed project path to: C:/Users/pi-j/Documents/Jan-Phillipp/Projekte/Unity/Write-or-Die
+C:/Users/pi-j/Documents/Jan-Phillipp/Projekte/Unity/Write-or-Die
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [48836] Host "[IP] 192.168.178.113 [Port] 0 [Flags] 2 [Guid] 2108610498 [EditorId] 2108610498 [Version] 1048832 [Id] WindowsEditor(7,Orduns-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [48836] Host "[IP] 192.168.178.113 [Port] 0 [Flags] 2 [Guid] 2108610498 [EditorId] 2108610498 [Version] 1048832 [Id] WindowsEditor(7,Orduns-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 11.29 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.20f1 (61c2feb0970d)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/pi-j/Documents/Jan-Phillipp/Projekte/Unity/Write-or-Die/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 Ti (ID=0x2208)
+    Vendor:   NVIDIA
+    VRAM:     12086 MB
+    Driver:   31.0.15.5161
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56404
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.010532 seconds.
+- Loaded All Assemblies, in  0.280 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.210 seconds
+Domain Reload Profiling: 488ms
+	BeginReloadAssembly (84ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (105ms)
+		LoadAssemblies (82ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (103ms)
+			TypeCache.Refresh (102ms)
+				TypeCache.ScanAssembly (92ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (210ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (166ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (111ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.533 seconds
+Refreshing native plugins compatible for Editor in 5.01 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.473 seconds
+Domain Reload Profiling: 1002ms
+	BeginReloadAssembly (122ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (337ms)
+		LoadAssemblies (274ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (135ms)
+			TypeCache.Refresh (111ms)
+				TypeCache.ScanAssembly (98ms)
+			ScanForSourceGeneratedMonoScriptInfo (20ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (473ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (355ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (60ms)
+			ProcessInitializeOnLoadAttributes (245ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (9ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 4.71 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4033 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 64 unused Assets / (61.1 KB). Loaded Objects now: 4497.
+Memory consumption went from 145.2 MB to 145.1 MB.
+Total: 2.529900 ms (FindLiveObjects: 0.209400 ms CreateObjectMapping: 0.101400 ms MarkObjects: 2.125300 ms  DeleteObjects: 0.093100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 700404.761166 seconds.
+  path: Assets/Space SFX - 102218/highpitch/robot/robot3.wav
+  artifactKey: Guid(3c770812785bc1449a6c75d444354fd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/highpitch/robot/robot3.wav using Guid(3c770812785bc1449a6c75d444354fd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8cb30aaf090edcaeb5e545abc9a3782') in 0.084317 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 33.256961 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/engine/engine03.wav
+  artifactKey: Guid(d08ef7891eb0934479adf74be1f58988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/engine/engine03.wav using Guid(d08ef7891eb0934479adf74be1f58988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a506d5bf50333018d8d46817b7928d9') in 0.026707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/engine/engine04.wav
+  artifactKey: Guid(2110aac79e5423747841c5aa2010f524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/engine/engine04.wav using Guid(2110aac79e5423747841c5aa2010f524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53e443f40e0015551be4c8be2bb5cf19') in 0.035775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/engine/engine05.wav
+  artifactKey: Guid(82e1932178edddf4796d71a920a7f04b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/engine/engine05.wav using Guid(82e1932178edddf4796d71a920a7f04b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c9b30ba7bc86ee700c16eb15f0b87b3') in 0.025611 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/engine/engine07.wav
+  artifactKey: Guid(065ccdc0aca78954aa5d0daf9b4adfdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/engine/engine07.wav using Guid(065ccdc0aca78954aa5d0daf9b4adfdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fbe2837be1b60c15bd117d52511a2e3') in 0.058235 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/engine/engine12.wav
+  artifactKey: Guid(520d687f26f66e2418b5d139328a1e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/engine/engine12.wav using Guid(520d687f26f66e2418b5d139328a1e67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd83ae000e60d4a2fdce6dbf38eb1c10a') in 0.028467 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 11.670477 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/hit/hit03.wav
+  artifactKey: Guid(6c15a6648d4c5bc4ca8a8b1177aa5b24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/hit/hit03.wav using Guid(6c15a6648d4c5bc4ca8a8b1177aa5b24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '550d1e67650dd507a762e39f9cd11257') in 0.033999 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/hit/hit04.wav
+  artifactKey: Guid(b761d8acf3ab9774c99b6dd19371daf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/hit/hit04.wav using Guid(b761d8acf3ab9774c99b6dd19371daf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58fab61f4c10100006cb203a7f225be8') in 0.015794 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/hit/hit06.wav
+  artifactKey: Guid(d102c08aedf1a7a4ab93401821d69c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/hit/hit06.wav using Guid(d102c08aedf1a7a4ab93401821d69c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bea3587e97d0d344a92d7dfe5bf6849e') in 0.015156 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/hit/hit10.wav
+  artifactKey: Guid(871e9cd633fa96f458c23eb5c87d11a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/hit/hit10.wav using Guid(871e9cd633fa96f458c23eb5c87d11a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce42814f038aad709f9b1bfab0ed6ac5') in 0.016389 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 38.120748 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise03.wav
+  artifactKey: Guid(f0fdf459dd30f8747bce4e186c7b3f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise03.wav using Guid(f0fdf459dd30f8747bce4e186c7b3f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34375ba96b7765173343be0dd8c553ee') in 0.024629 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise08.wav
+  artifactKey: Guid(974af54ee7f5bab4a912a8a722f981de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise08.wav using Guid(974af54ee7f5bab4a912a8a722f981de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae4903bf564bbc098bc6a2d32f718df5') in 0.059408 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise15.wav
+  artifactKey: Guid(8d595b199e6207541a116176e55e0887) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise15.wav using Guid(8d595b199e6207541a116176e55e0887) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48c13357e4f50ce0d749746e37214226') in 0.026224 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise07.wav
+  artifactKey: Guid(99fcfbbc64b96e342ab3d54d08f88740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise07.wav using Guid(99fcfbbc64b96e342ab3d54d08f88740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df96a9a735f7826c7f5e7b5e39dae1fc') in 0.048046 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise17.wav
+  artifactKey: Guid(3114cb54b89a81a499424c9247ed0702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise17.wav using Guid(3114cb54b89a81a499424c9247ed0702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df79c2ecc232996e08f1bcd5a193e06e') in 0.035278 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Space SFX - 102218/lowpitch/noise/noise16.wav
+  artifactKey: Guid(d572a844dae494c4ca5968108c928db7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/lowpitch/noise/noise16.wav using Guid(d572a844dae494c4ca5968108c928db7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '303756c79984e248182a81a637b74ce6') in 0.067235 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 10.413250 seconds.
+  path: Assets/Space SFX - 102218/highpitch/shoot/shoot3.wav
+  artifactKey: Guid(a421c88e31c06c24791fbcc9cd18a8db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/highpitch/shoot/shoot3.wav using Guid(a421c88e31c06c24791fbcc9cd18a8db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e73659527d380a7e640043f37ec86b6') in 0.012737 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Space SFX - 102218/highpitch/shoot/shoot6.wav
+  artifactKey: Guid(9e07af2815efb4e418d68f34c4b5f7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space SFX - 102218/highpitch/shoot/shoot6.wav using Guid(9e07af2815efb4e418d68f34c4b5f7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71c651538df3308f78c55cc7fcc3d24b') in 0.014912 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: Der E/A-Vorgang wurde wegen eines Threadendes oder einer Anwendungsanforderung abgebrochen.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

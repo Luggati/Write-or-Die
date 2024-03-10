@@ -10,6 +10,7 @@ public class EnemyHandler : MonoBehaviour
     public InputField inputField;
     public GameObject gun;
     public GameObject logicScript;
+    public GameObject utils;
 
     public float spawnrate = 2;
     private float timer = 0;
@@ -20,14 +21,6 @@ public class EnemyHandler : MonoBehaviour
     {
         inputField.text = "";
         spawnEnemy();
-        inputField.onEndEdit.AddListener(value => {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                CheckInput(value); // Überprüfe die Eingabe
-                inputField.text = ""; // Setze das Input Field zurück
-                inputField.ActivateInputField(); // Setze den Fokus zurück auf das Input Field
-            }
-        });
         inputField.ActivateInputField();
 
     }
@@ -44,29 +37,29 @@ public class EnemyHandler : MonoBehaviour
             spawnEnemy();
             timer = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            if (inputField.isFocused)
-            {
-                CheckInput(inputField.text); // Überprüfe die Eingabe
-                inputField.text = ""; // Setze das Input Field zurück
-                inputField.ActivateInputField(); // Setze den Fokus zurück auf das Input Field
-                inputField.Select(); // Wähle das Input Field aus, um sicherzustellen, dass der Cursor sichtbar bleibt
-            }
-        }
 
     }
+
     public void spawnEnemy()
     {
-        float lowestPoint = transform.position.y - spawnOffset;
+        float lowestPoint = transform.position.y - spawnOffset + 1.7f;
         float highestPoint = transform.position.y + spawnOffset;
 
         GameObject enemy = Instantiate(enemys, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), Quaternion.identity);
         enemy.transform.up = -transform.right;
 
+        if (logicScript.GetComponent<LogicScript>().GetLanguage().Equals("en"))
+        {
+            enemy.GetComponentInChildren<Text>().text = utils.GetComponent<UtilsScript>().GetRandomEngWordWithLenght(3).ToLower();
+        }
+        else
+        {
+            enemy.GetComponentInChildren<Text>().text = utils.GetComponent<UtilsScript>().GetRandomGerWordWithLenght(3).ToLower();
+        }
 
     }
-    void CheckInput(string userInput)
+
+    public void CheckInput(string userInput)
     {
         // Finde alle Gegner im Spiel
         EnemyBehavoir[] enemies = FindObjectsOfType<EnemyBehavoir>();
@@ -76,7 +69,7 @@ public class EnemyHandler : MonoBehaviour
             // Vergleiche den User-Input mit jedem Gegner-Wort
             if (userInput.Equals(enemy.textname.text, System.StringComparison.OrdinalIgnoreCase))
             {
-                gun.GetComponent<GunScript>().Fire(enemy.transform.position);
+                gun.GetComponent<GunScript>().Fire(enemy);
                 /*
                  // Füge einen Punkt zum Score hinzu
                 Destroy(enemy.gameObject); // Zerstöre den Gegner, wenn das Wort übereinstimmt

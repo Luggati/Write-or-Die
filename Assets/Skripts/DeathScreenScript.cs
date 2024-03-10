@@ -7,6 +7,7 @@ public class DeathScreenScript : MonoBehaviour
 {
 
     public GameObject logicScript;
+    public Text gameOvercurrentScoreTf;
     public Text scoreboardTf;
     // Start is called before the first frame update
     void Start()
@@ -18,5 +19,10 @@ public class DeathScreenScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetCurrentScore()
+    {
+        gameOvercurrentScoreTf.text = "Game Over \n Your Score: " + logicScript.GetComponent<LogicScript>().GetCurrentScore();
     }
 }

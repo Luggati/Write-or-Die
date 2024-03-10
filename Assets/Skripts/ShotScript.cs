@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShotScript : MonoBehaviour
 {
+    Renderer[] graphics;
 
     Vector3 shotDirection;
     int velocity = 70;
@@ -27,11 +28,6 @@ public class ShotScript : MonoBehaviour
         }
     }
 
-    public void SetShotDirection(Vector3 newShotDirection)
-    {
-        shotDirection = newShotDirection;
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -41,4 +37,26 @@ public class ShotScript : MonoBehaviour
         }
     }
 
+    public void SetShotDirection(Vector3 newShotDirection)
+    {
+        shotDirection = newShotDirection;
+    }
+
+    public void SetShotTyp(string type)
+    {
+        graphics = GetComponentsInChildren<Renderer>();
+        if (type.Equals("L"))
+        {
+            graphics[0].enabled = true;
+        }
+        else if (type.Equals("R"))
+        {
+            graphics[1].enabled = true;
+        }
+        else if (type.Equals("M"))
+        {
+            graphics[2].enabled = true;
+        }
+
+    }
 }

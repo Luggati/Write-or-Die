@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-
+    public GameObject player;
     public GameObject shot;
+    AudioSource shotAudio;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        shotAudio = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,15 +20,20 @@ public class GunScript : MonoBehaviour
         
     }
 
-    public void Fire(Vector3 enemyPos)
+    public void Fire(EnemyBehavoir enemy)
     {
-
+        float enemyVelocity = enemy.movespeed;
+        Vector3 enemyPos = enemy.transform.position - new Vector3(enemyVelocity/5,0,0);
+        shotAudio.Play();
         Vector3 direction = Vector3.Normalize(enemyPos - transform.position);
         GameObject newShot = Instantiate(shot) as GameObject;
         newShot.transform.position = transform.position;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         newShot.transform.rotation = rotation;
         newShot.GetComponent<ShotScript>().SetShotDirection(direction);
+        newShot.GetComponent<ShotScript>().SetShotTyp(enemy.GetEnemyType());
+
+        player.GetComponent<PlayerScript>().SetTargetAngle(direction);
     }
 
     /*

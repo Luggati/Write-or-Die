@@ -7,12 +7,15 @@ public class EnemyBehavoir : MonoBehaviour
 {
     public float movespeed = 5;
     public Text textname;
+    public string type;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        SetRandomName();
+        //SetRandomName();
+        SetRandomType();
+        movespeed += Random.Range(-movespeed / 5, movespeed /5);
         
     }
 
@@ -38,6 +41,7 @@ public class EnemyBehavoir : MonoBehaviour
     }
     public void SetRandomName()
     {
+
         char randomLetter = GetRandomLetter();
         textname.text = randomLetter.ToString();
         for (int i = 0; i < 4; i++)
@@ -48,7 +52,29 @@ public class EnemyBehavoir : MonoBehaviour
                 textname.text = textname.text + letter.ToString();
             }
         }
+
+        
+    }
+
+    void SetRandomType()
+    {
+        int random = Random.Range(0, 3);
+        if (random == 0)
+        {
+            type = "L";
+        }
+        else if (random == 1)
+        {
+            type = "R";
+        }
+        else if (random == 2)
+        {
+            type = "M";
+        }
     }
   
-
+    public string GetEnemyType()
+    {
+        return type;
+    }
 }
