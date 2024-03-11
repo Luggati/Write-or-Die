@@ -43,8 +43,13 @@ public class EnemyHandler : MonoBehaviour
         float lowestPoint = transform.position.y - spawnOffset + 2.0f;
         float highestPoint = transform.position.y + spawnOffset;
 
-        GameObject enemy = Instantiate(enemys, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), Quaternion.identity);
-        enemy.transform.up = -transform.right;
+        Vector3 direction = Vector3.Normalize(new Vector3(5, 0, 0) - transform.position);
+        GameObject enemy = Instantiate(enemys, 
+            new Vector3(transform.position.x, 
+            Random.Range(lowestPoint, highestPoint), 0), 
+            Quaternion.LookRotation(Vector3.forward, direction));
+        enemy.GetComponent<EnemyBehavoir>().SetEnemyDirection(direction);
+        enemy.GetComponent<EnemyBehavoir>().SetTextColor(GameObject.Find("UI").GetComponent<UiSettings>().GetActiveColor());
 
     }
 

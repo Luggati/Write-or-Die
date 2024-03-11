@@ -12,6 +12,7 @@ public class EnemyBehavoir : MonoBehaviour
     int type;
     float speedRangePercent = 0.25f;
     float startSpeed;
+    Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class EnemyBehavoir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (Vector3.left * movespeed) * Time.deltaTime;
+        transform.position = transform.position + (direction * movespeed) * Time.deltaTime;
     }
 
     public void SetRandomName(int wordLenght)
@@ -48,6 +49,11 @@ public class EnemyBehavoir : MonoBehaviour
         type = Random.Range(0, 3);
         transform.GetChild(type).gameObject.SetActive(true);
     }
+
+    public void SetEnemyDirection(Vector3 newDirection)
+    {
+        direction = newDirection;
+    }
   
     public int GetEnemyType()
     {
@@ -62,6 +68,11 @@ public class EnemyBehavoir : MonoBehaviour
     public void ResetSpeed()
     {
         movespeed = startSpeed;
+    }
+
+    public void SetTextColor(Color color)
+    {
+        textname.color = color;
     }
 
 }
