@@ -10,7 +10,7 @@ public class EnemyBehavoir : MonoBehaviour
     public float movespeed = 5;
     public Text textname;
     int type;
-    float speedRangePercent = 0.25f;
+    float speedRangePercent = 0.15f;
     float startSpeed;
     Vector3 direction;
 
@@ -18,7 +18,7 @@ public class EnemyBehavoir : MonoBehaviour
     void Start()
     {
         SetRandomType();
-        SetRandomName(Random.Range(2,6));
+        SetRandomName(Random.Range(1,4) + Random.Range(1,4));
         movespeed += Random.Range(-movespeed * speedRangePercent, movespeed * speedRangePercent);
         startSpeed = movespeed;
     }

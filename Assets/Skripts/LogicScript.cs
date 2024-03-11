@@ -13,6 +13,8 @@ public class LogicScript : MonoBehaviour
     public GameObject cam;
     public GameObject enemyHandler;
     public GameObject ui;
+    public GameObject startScreen;
+    public GameObject currentInputUi;
     bool isDead = false;
     
     int Health = 3;
@@ -24,9 +26,16 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetProhibitedWords();
         Pause();
 
+        currentInputUi.SetActive(false);
+        hud.SetActive(false);
+        menu.SetActive(false);
+        deathScreen.SetActive(false);
+        startScreen.SetActive(true);
+        currentInputUi.SetActive(true);
+
+        SetProhibitedWords();
         inputField.text = "";
         inputField.ActivateInputField();
     }
@@ -151,10 +160,15 @@ public class LogicScript : MonoBehaviour
         if (enableMenu)
         {
             Pause();
+            hud.SetActive(false);
+            currentInputUi.SetActive(false);
             menu.SetActive(true);
+            hud.SetActive(true);
+            currentInputUi.SetActive(true);
         } else
         {
             menu.SetActive(false);
+            startScreen.SetActive(false);
             hud.SetActive(true);
             UnPause();
         }

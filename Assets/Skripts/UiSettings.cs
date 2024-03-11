@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -13,8 +14,9 @@ public class UiSettings : MonoBehaviour
     public GameObject hud;
     public GameObject deathScreen;
     public GameObject menu;
-    public GameObject inputField;
+    public GameObject currentInput;
     public GameObject logicScript;
+    public GameObject startScreen;
     Color aktiveColor;
     Color inaktiveColor;
 
@@ -22,7 +24,7 @@ public class UiSettings : MonoBehaviour
     List<GameObject> coreComp = new List<GameObject>();
     List<Text> textFields = new List<Text>();
     List<GameObject> weapons = new List<GameObject>();
-
+    public Font font;
 
     // Start is called before the first frame update
     void Start()
@@ -34,21 +36,26 @@ public class UiSettings : MonoBehaviour
         coreComp.Add(hud);
         coreComp.Add(deathScreen);
         coreComp.Add(menu);
-        coreComp.Add(inputField);
+        coreComp.Add(currentInput);
+        coreComp.Add(startScreen);
 
 
         foreach (GameObject go in coreComp)
         { 
             textFields.AddRange(go.GetComponentsInChildren<Text>());
         }
+
+
         SetTextColor(Color.red);
+
+        ChangeFont(0);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ChangeFont(0);
     }
 
     void ChangeColor(Color color, List<Text> tfs)
@@ -60,6 +67,14 @@ public class UiSettings : MonoBehaviour
             {
                 tf.color = inaktiveColor;
             }
+        }
+    }
+
+    void ChangeFont(int type)
+    {
+        foreach (Text tf in textFields)
+        {
+            tf.font = font;
         }
     }
 
