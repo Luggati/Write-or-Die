@@ -22,15 +22,6 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            logicScript.GetComponent<LogicScript>().DecreaseHealth();
-        }
-    }
-
     public void SetTargetAngle(Vector3 direction)
     {
         float zielwinkel = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg -90;

@@ -42,21 +42,21 @@ public class HUDScript : MonoBehaviour
         UpdateText();
     }
 
-    public void ChangeWeapon(string c)
+    public void ChangeWeapon(int type)
     {
-        if (c.Equals("L"))
+        if (type == 1)
         {
             weapon1.tag = "Untagged";
             weapon2.tag = "Inaktive";
             weapon3.tag = "Inaktive";
         }
-        else if (c.Equals("R"))
+        else if (type == 2)
         {
             weapon1.tag = "Inaktive";
             weapon2.tag = "Untagged";
             weapon3.tag = "Inaktive";
         }
-        else if (c.Equals("M"))
+        else if (type == 3)
         {
             weapon3.tag = "Untagged";
             weapon1.tag = "Inaktive";

@@ -1,80 +1,67 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.UI;
 
 public class EnemyBehavoir : MonoBehaviour
 {
     public float movespeed = 5;
     public Text textname;
-    public string type;
-
+    int type;
+    float speedRangePercent = 0.25f;
+    float startSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        //SetRandomName();
         SetRandomType();
-        movespeed += Random.Range(-movespeed / 5, movespeed /5);
-        
+        SetRandomName(Random.Range(2,6));
+        movespeed += Random.Range(-movespeed * speedRangePercent, movespeed * speedRangePercent);
+        startSpeed = movespeed;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = transform.position + (Vector3.left * movespeed) * Time.deltaTime;
-        
-
-        Vector3 pos = transform.position;
-        if (pos.x < -28 || pos.x > 28 || pos.y < -15 || pos.y > 15)
-        {
-            Destroy(gameObject);
-        }
     }
- 
-    private char GetRandomLetter()
-    {
-        // Verwende ASCII-Werte für Großbuchstaben (65-90)
-        int randomInt = Random.Range(65, 91);
-        char randomChar = (char)randomInt;
-        return randomChar;
-    }
-    public void SetRandomName()
-    {
 
-        char randomLetter = GetRandomLetter();
-        textname.text = randomLetter.ToString();
-        for (int i = 0; i < 4; i++)
+    public void SetRandomName(int wordLenght)
+    {
+        LogicScript ls = GameObject.Find("LogicScript").GetComponent<LogicScript>();
+        UtilsScript utils = GameObject.Find("Utils").GetComponent<UtilsScript>();
+        if (utils == null) Debug.Log("Utils is null");
+        if (ls.GetLanguage().Equals("en"))
         {
-            if (Random.Range(0, 2) == 0)
-            {
-                char letter = GetRandomLetter();
-                textname.text = textname.text + letter.ToString();
-            }
+            textname.text = utils.GetRandomEngWordWithLenght(wordLenght).ToLower();
         }
-
-        
+        else
+        {
+            textname.text = utils.GetRandomGerWordWithLenght(wordLenght).ToLower();
+        }
     }
 
     void SetRandomType()
     {
-        int random = Random.Range(0, 3);
-        if (random == 0)
-        {
-            type = "L";
-        }
-        else if (random == 1)
-        {
-            type = "R";
-        }
-        else if (random == 2)
-        {
-            type = "M";
-        }
+        type = Random.Range(0, 3);
+        transform.GetChild(type).gameObject.SetActive(true);
     }
   
-    public string GetEnemyType()
+    public int GetEnemyType()
     {
         return type;
     }
+
+    public string GetEnmyText()
+    {
+        return textname.text;
+    }
+
+    public void ResetSpeed()
+    {
+        movespeed = startSpeed;
+    }
+
 }

@@ -4,24 +4,13 @@ using UnityEngine;
 using System.IO;
 using System;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 
 public class UtilsScript : MonoBehaviour
 {
-    List<List<string>> gerWords = new List<List<string>>();
-    List<List<string>> engWords = new List<List<string>>();
-
-    List<string> gerWords1 = new List<string>();
-    List<string> gerWords2 = new List<string>();
-    List<string> gerWords3 = new List<string>();
-    List<string> gerWords4 = new List<string>();
-    List<string> gerWords5 = new List<string>();
-
-    List<string> engWords1 = new List<string>();
-    List<string> engWords2 = new List<string>();
-    List<string> engWords3 = new List<string>();
-    List<string> engWords4 = new List<string>();
-    List<string> engWords5 = new List<string>();
+    Dictionary<int, List<string>> germanWords;
+    Dictionary<int, List<string>> englishWords;
 
     public GameObject logicScript;
 
@@ -32,20 +21,10 @@ public class UtilsScript : MonoBehaviour
         List<string> gerWordsUnsorted = new List<string>(File.ReadAllLines("Assets/gerWords.txt"));
         List<string> engWordsUnsorted = new List<string>(File.ReadAllLines("Assets/engWords.txt"));
 
-        AddGerWordToList(gerWordsUnsorted);
-        AddEngWordToList(engWordsUnsorted);
+        germanWords = gerWordsUnsorted.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToList());
+        englishWords = engWordsUnsorted.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToList());
 
-        gerWords.Add(gerWords1);
-        gerWords.Add(gerWords2);
-        gerWords.Add(gerWords3);
-        gerWords.Add(gerWords4);
-        gerWords.Add(gerWords5);
-
-        engWords.Add(engWords1);
-        engWords.Add(engWords2);
-        engWords.Add(engWords3);
-        engWords.Add(engWords4);
-        engWords.Add(engWords5);
+        RemoveProhibitedWords();
     }
 
     // Update is called once per frame
@@ -56,82 +35,35 @@ public class UtilsScript : MonoBehaviour
 
     public string GetRandomGerWordWithLenght(int wordLenght)
     {
-        int index = Random.Range(0, gerWords[wordLenght - 1].Count);
-        return gerWords[wordLenght - 1][index];
+        int index = Random.Range(0, germanWords[wordLenght].Count);
+        if (germanWords.ContainsKey(wordLenght) == false)
+        {
+            return "Error";
+        }
+        return germanWords[wordLenght][index];
     }
 
     public string GetRandomEngWordWithLenght(int wordLenght)
     {
-        int index = Random.Range(0, engWords[wordLenght - 1].Count);
-        return engWords[wordLenght - 1][index];
-    }
-
-    void AddGerWordToList(List<string> wordList)
-    {
-        foreach (string word in wordList)
+        int index = Random.Range(0, englishWords[wordLenght].Count);
+        if (englishWords.ContainsKey(wordLenght) == false)
         {
-            foreach (string prohibitedWord in logicScript.GetComponent<LogicScript>().GetProhibitedWords())
-            {
-                if (word.ToLower().Equals(prohibitedWord))
-                {
-                    continue;
-                }
-            }
-
-            if (word.Length == 1)
-            {
-                gerWords1.Add(word);
-            }
-            else if (word.Length == 2)
-            {
-                gerWords2.Add(word);
-            }
-            else if (word.Length == 3)
-            {
-                gerWords3.Add(word);
-            }
-            else if (word.Length == 4)
-            {
-                gerWords4.Add(word);
-            }
-            else if (word.Length == 5)
-            {
-                gerWords5.Add(word);
-            }
+            return "Error";
         }
+        return englishWords[wordLenght][index];
     }
 
-    void AddEngWordToList(List<string> wordList)
+    void RemoveProhibitedWords()
     {
-        foreach (string word in wordList)
+        foreach (string prohibitedWord in logicScript.GetComponent<LogicScript>().GetProhibitedWords())
         {
-            foreach (string prohibitedWord in logicScript.GetComponent<LogicScript>().GetProhibitedWords())
+            if (germanWords.ContainsKey(prohibitedWord.Length))
             {
-                if (word.ToLower().Equals(prohibitedWord))
-                {
-                    continue;
-                }
+                germanWords[prohibitedWord.Length].Remove(prohibitedWord);
             }
-
-            if (word.Length == 1)
+            if (englishWords.ContainsKey(prohibitedWord.Length))
             {
-                engWords1.Add(word);
-            }
-            else if (word.Length == 2)
-            {
-                engWords2.Add(word);
-            }
-            else if (word.Length == 3)
-            {
-                engWords3.Add(word);
-            }
-            else if (word.Length == 4)
-            {
-                engWords4.Add(word);
-            }
-            else if (word.Length == 5)
-            {
-                engWords5.Add(word);
+                englishWords[prohibitedWord.Length].Remove(prohibitedWord);
             }
         }
     }

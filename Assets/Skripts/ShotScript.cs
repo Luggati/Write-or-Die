@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShotScript : MonoBehaviour
 {
-    Renderer[] graphics;
 
     Vector3 shotDirection;
     int velocity = 70;
+    int type;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,11 @@ public class ShotScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            GameObject.Find("EnemyHandler").GetComponent<EnemyHandler>().Hit(other.gameObject);
+            if (other.GetComponent<EnemyBehavoir>().GetEnemyType() == type)
+            {
+                GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseScore(1);
+                Destroy(other.gameObject);
+            }
             Destroy(gameObject);
         }
     }
@@ -42,21 +46,14 @@ public class ShotScript : MonoBehaviour
         shotDirection = newShotDirection;
     }
 
-    public void SetShotTyp(string type)
+    public void SetShotTyp(int shotType)
     {
-        graphics = GetComponentsInChildren<Renderer>();
-        if (type.Equals("L"))
-        {
-            graphics[0].enabled = true;
-        }
-        else if (type.Equals("R"))
-        {
-            graphics[1].enabled = true;
-        }
-        else if (type.Equals("M"))
-        {
-            graphics[2].enabled = true;
-        }
+        type = shotType;
+        transform.GetChild(shotType).gameObject.SetActive(true);
+    }
 
+    public int GetShotTyp()
+    {
+        return type;
     }
 }
