@@ -28,7 +28,7 @@ public class LogicScript : MonoBehaviour
     
     int Health = 3;
     int currentScore = 0;
-    public List<Dictionary<string, int>> sb = new List<Dictionary<string, int>>();
+    ScoreBoard sb;
     string language = "en";
     bool scoreAdded = false;
     List<string> prohibitedWords = new List<string>();
@@ -36,7 +36,8 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadScoreboard();
+        sb = new ScoreBoard();
+        sb.LoadScoreboard();
 
         Pause();
         LoadPlayerPrefs();
@@ -51,8 +52,6 @@ public class LogicScript : MonoBehaviour
         SetProhibitedWords();
         inputField.text = "";
         inputField.ActivateInputField();
-
-        
     }
 
 
@@ -151,10 +150,8 @@ public class LogicScript : MonoBehaviour
             case "score":
                 if (inputPieces.Length >= 2 && deathScreen.activeSelf == true && scoreAdded == false)
                 {
-                    print("Score added");
-                    AddToScoreboard(inputPieces[1], currentScore);
+                    sb.AddToScoreboard(inputPieces[1], currentScore);
                     scoreAdded = true;
-                    SaveScoreboard();
                 }
                 
                 break;
@@ -265,58 +262,6 @@ public class LogicScript : MonoBehaviour
         language = PlayerPrefs.GetString("language");
     }
 
-    void AddToScoreboard(string name, int score)
-    {
-        Dictionary<string, int> entry = new Dictionary<string, int>();
-        entry.Add(name, score);
-        sb.Add(entry);
-    }
-
-    void SaveScoreboard()
-    {
-        sb = sb.OrderBy(x => x.Values).ToList();
-
-        if (sb.Count > 5)
-        {
-            sb = sb.GetRange(0, 5);
-        }
-
-        string path = "Assets/scoreboard.json";
-        string json = JsonUtility.ToJson(sb);
-        File.WriteAllText(path, json);
-    }
-
-    void LoadScoreboard()
-    {
-        string fileName = "Assets/scoreboard.json";
-        if (File.Exists(fileName))
-        {
-            string json = File.ReadAllText(fileName);
-            sb = JsonUtility.FromJson<List<Dictionary<string, int>>>(json);
-        }
-        else
-        {
-            sb = new List<Dictionary<string, int>>();
-        }
-    }
-
-    string ScoreboardToString()
-    {
-        string result = "";
-        if (sb.Count != 0)
-        {
-            foreach (Dictionary<string, int> entry in sb)
-            {
-                foreach (var pair in entry)
-                {
-                    result += pair.Key + " " + pair.Value + "\n";
-                } 
-            }
-        }
-        
-        return result;
-    }
-
 
     // Public Methods
 
@@ -356,7 +301,7 @@ public class LogicScript : MonoBehaviour
 
     public string GetScoreboardAsString()
     {
-        return ScoreboardToString();
+        return sb.GetScoreboardAsString();
     }
 
     public string GetLanguage()
@@ -395,11 +340,80 @@ public class LogicScript : MonoBehaviour
         //Application.Quit();
     }
 
-    [Serializable]
+    //[Serializable]
     public class ScoreBoard
     {
-        public List<string> playerNames;
-        public List<string> scores;
+        private class Entry
+        {
+            public string name;
+            public int score;
+
+            public Entry(string name, int score)
+            {
+                this.name = name;
+                this.score = score;
+            }
+        }
+
+
+        List<Entry> scoreboard = new List<Entry>();
+
+        
+        public void AddToScoreboard(string name, int score)
+        {
+            Entry entry = new Entry(name, score);
+            scoreboard.Add(entry);
+            print("Raw: " + GetScoreboardAsString());
+            SortScoreboard();
+            print("Cut: " + GetScoreboardAsString());
+            SaveScoreboard();
+            
+        }
+
+        void SortScoreboard()
+        {
+            List<Entry> sortedList = scoreboard.OrderByDescending(x => x.score).ToList();
+            scoreboard = sortedList;
+            print("Sorted: " + GetScoreboardAsString());
+            if (scoreboard.Count > 5)
+            {
+                scoreboard = scoreboard.GetRange(0, 5);
+            }
+        }
+
+        public string GetScoreboardAsString()
+        {
+            string result = "";
+            foreach (Entry entry in scoreboard)
+            {
+                result += " " + entry.name + ":  " + entry.score + "\n ";
+            }
+
+            return result;
+        }
+
+        void SaveScoreboard()
+        {
+            string path = Application.persistentDataPath + "scoreboard.json";
+            string json = JsonUtility.ToJson(scoreboard);
+            File.WriteAllText(path, json);
+        }
+
+        public void LoadScoreboard()
+        {
+            string path = Application.persistentDataPath + "scoreboard.json";
+            if (File.Exists(path))
+            {
+                string json = File.ReadAllText(path);
+                scoreboard = JsonUtility.FromJson<List<Entry>>(json);
+            }
+            else
+            {
+                scoreboard = new List<Entry>();
+            }
+        }
+
+
     }
 
 }

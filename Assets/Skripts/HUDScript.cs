@@ -22,16 +22,13 @@ public class HUDScript : MonoBehaviour
     public GameObject uiScript;
     public Text menuCommands;
 
-    string sb;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        sb = logicScript.GetComponent<LogicScript>().GetScoreboardAsString();
-        scoreboardTf.text = sb;
         commandListTf.text = "\"help\" \n \"menu\" \n \"resume\" \n \"restart\" \n \"exit\" \n \n Weapons: \n Missile: \"m\" \n Laser: \"l\" \n Railgun: \"r\"";
         UpdateText();
-
     }
 
     void Update()
@@ -72,7 +69,7 @@ public class HUDScript : MonoBehaviour
     {
         lifeCounter.text = "Health: " + logicScript.GetComponent<LogicScript>().GetHealth();
         currentScore.text = "Kills: " + logicScript.GetComponent<LogicScript>().GetCurrentScore();
-        scoreboardTf.text = sb;
+        scoreboardTf.text = logicScript.GetComponent<LogicScript>().GetScoreboardAsString();
 
         Color color = uiScript.GetComponent<UiSettings>().GetActiveColor();
         string lang = logicScript.GetComponent<LogicScript>().GetLanguage();
