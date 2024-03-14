@@ -13,7 +13,7 @@ public class EnemyHandler : MonoBehaviour
     public GameObject logicScript;
     public GameObject utils;
 
-    public float spawInterval = 2.2f;
+    public float spawnInterval = 2.2f;
     private float timer = 2;
     float spawnOffset = 12;
     
@@ -26,7 +26,7 @@ public class EnemyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawInterval)
+        if (timer < spawnInterval)
         {
             timer = timer + Time.deltaTime;
         }
@@ -52,6 +52,7 @@ public class EnemyHandler : MonoBehaviour
         enemy.GetComponent<EnemyBehavoir>().SetEnemyDirection(direction);
         enemy.GetComponent<EnemyBehavoir>().SetTextColor(GameObject.Find("UI").GetComponent<UiSettings>().GetActiveColor());
 
+        spawnInterval = spawnInterval - 0.01f;
     }
 
     public void CheckInput(string userInput)
