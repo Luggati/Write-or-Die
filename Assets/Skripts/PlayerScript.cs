@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
     {
         transform.rotation = orgiginalRotation;
         targetRotation = orgiginalRotation;
+        playerWeaponAnimator.GetComponent<Renderer>().enabled = true;
         playerWeaponAnimator.SetTrigger("Reset");
         playerEngineAnimator.SetTrigger("Reset");
         

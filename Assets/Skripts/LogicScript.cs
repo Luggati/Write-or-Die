@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
@@ -41,6 +42,7 @@ public class LogicScript : MonoBehaviour
 
         Pause();
         LoadPlayerPrefs();
+
 
         currentInputUi.SetActive(false);
         hud.SetActive(false);
@@ -258,8 +260,22 @@ public class LogicScript : MonoBehaviour
 
     void LoadPlayerPrefs()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("volume");
-        language = PlayerPrefs.GetString("language");
+        if (PlayerPrefs.HasKey("volume") == false)
+        {
+            PlayerPrefs.SetFloat("volume", 1.0f);
+        } 
+        else
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("volume");
+        }
+        if (PlayerPrefs.HasKey("language") == false)
+        {
+            PlayerPrefs.SetString("language", "en");
+        }
+        else
+        {
+            language = PlayerPrefs.GetString("language");
+        }
     }
 
 
@@ -340,13 +356,19 @@ public class LogicScript : MonoBehaviour
         //Application.Quit();
     }
 
-    //[Serializable]
+    [Serializable]
     public class ScoreBoard
     {
-        private class Entry
+        [Serializable]
+        public class Entry
         {
             public string name;
             public int score;
+
+            public Entry()
+            {
+
+            }
 
             public Entry(string name, int score)
             {
@@ -357,6 +379,7 @@ public class LogicScript : MonoBehaviour
 
 
         List<Entry> scoreboard = new List<Entry>();
+        
 
         
         public void AddToScoreboard(string name, int score)
@@ -394,18 +417,23 @@ public class LogicScript : MonoBehaviour
 
         void SaveScoreboard()
         {
-            string path = Application.persistentDataPath + "scoreboard.json";
-            string json = JsonUtility.ToJson(scoreboard);
-            File.WriteAllText(path, json);
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Entry>));
+
+            string path = Application.persistentDataPath + "scoreboard.xml";
+            TextWriter writer = new StreamWriter(path);
+            serializer.Serialize(writer, scoreboard);
+            writer.Close();
         }
 
         public void LoadScoreboard()
         {
-            string path = Application.persistentDataPath + "scoreboard.json";
+            string path = Application.persistentDataPath + "scoreboard.xml";
             if (File.Exists(path))
             {
-                string json = File.ReadAllText(path);
-                scoreboard = JsonUtility.FromJson<List<Entry>>(json);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Entry>));
+                TextReader reader = new StreamReader(path);
+                scoreboard = (List<Entry>)serializer.Deserialize(reader);
+                reader.Close();
             }
             else
             {

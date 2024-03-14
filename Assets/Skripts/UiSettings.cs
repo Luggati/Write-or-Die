@@ -55,8 +55,8 @@ public class UiSettings : MonoBehaviour
             textFields.AddRange(go.GetComponentsInChildren<Text>());
         }
 
-        Color newColor = new Color(PlayerPrefs.GetFloat("colorR"), PlayerPrefs.GetFloat("colorG"), PlayerPrefs.GetFloat("colorB"), 1);
-        SetTextColor(newColor);
+        
+        LoadColor();
 
         ChangeFont(0);
 
@@ -77,6 +77,18 @@ public class UiSettings : MonoBehaviour
             {
                 tf.color = inaktiveColor;
             }
+        }
+    }
+
+    void LoadColor()
+    {
+        if (PlayerPrefs.HasKey("colorR"))
+        {
+            SetTextColor(new Color(PlayerPrefs.GetFloat("colorR"), PlayerPrefs.GetFloat("colorG"), PlayerPrefs.GetFloat("colorB"), 1));
+        }
+        else
+        {
+            SetTextColor(Color.red);
         }
     }
 
