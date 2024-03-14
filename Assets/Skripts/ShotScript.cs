@@ -6,7 +6,7 @@ public class ShotScript : MonoBehaviour
 {
 
     Vector3 shotDirection;
-    int velocity = 70;
+    int velocity = 50;
     int type;
 
     // Start is called before the first frame update
@@ -18,8 +18,8 @@ public class ShotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        transform.position += shotDirection * velocity * Time.deltaTime;
+        int actVel = velocity + (3 - type) * 15;
+        transform.position += shotDirection * actVel * Time.deltaTime;
 
         Vector3 pos = transform.position;
         if (pos.x < -28 || pos.x > 28 || pos.y < -15 || pos.y > 15)
@@ -32,12 +32,13 @@ public class ShotScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Destroy(gameObject);
             if (other.GetComponent<EnemyBehavoir>().GetEnemyType() == type)
             {
                 GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseScore(1);
                 Destroy(other.gameObject);
             }
-            Destroy(gameObject);
+            
         }
     }
 

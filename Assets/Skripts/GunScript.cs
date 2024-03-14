@@ -7,6 +7,8 @@ public class GunScript : MonoBehaviour
     public GameObject player;
     public GameObject shot;
     AudioSource shotAudio;
+    bool lastWeapon = true;
+    int weaponType = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class GunScript : MonoBehaviour
         
     }
 
-    public void Fire(EnemyBehavoir enemy, int shotType)
+    public void Fire(EnemyBehavoir enemy)
     {
         float enemyVelocity = enemy.movespeed;
         Vector3 enemyPos = enemy.transform.position - new Vector3(enemyVelocity/5,0,0);  // enemyPos wird vorhergesagt
@@ -28,14 +30,33 @@ public class GunScript : MonoBehaviour
         
         GameObject newShot = Instantiate(shot) as GameObject;
         shotAudio.Play();
+        TriggerShotAnimation();
 
-        newShot.transform.position = transform.position;    // Schuss wird an der Position des Spielers erstellt
+        newShot.transform.position = transform.position;    // Schuss wird an der Gun des Spielers erstellt
         newShot.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);  // Drehe den Schuss in Schussrichtung
 
         newShot.GetComponent<ShotScript>().SetShotDirection(direction);     // Setze die Schussrichtung
-        newShot.GetComponent<ShotScript>().SetShotTyp(shotType);    // Setze den Schusstyp
+        newShot.GetComponent<ShotScript>().SetShotTyp(weaponType);    // Setze den Schusstyp
 
         player.GetComponent<PlayerScript>().SetTargetAngle(direction);  // Setze die Zielrichtung des Spielers
+    }
+
+    private void TriggerShotAnimation()
+    {
+        if (lastWeapon)
+        {
+            player.GetComponentInChildren<Animator>().SetTrigger("Shot1");  // Starte die Schussanimation
+        }
+        else
+        {
+            player.GetComponentInChildren<Animator>().SetTrigger("Shot2");  // Starte die Schussanimation
+        }
+        lastWeapon = !lastWeapon;
+    }
+
+    public void SetWeaponType(int type)
+    {
+        weaponType = type;
     }
 
 }

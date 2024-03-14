@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class EnemyBehavoir : MonoBehaviour
 {
-    public float movespeed = 5;
+    public float movespeed = 4.5f;
     public Text textname;
     int type;
     float speedRangePercent = 0.15f;
@@ -18,7 +18,8 @@ public class EnemyBehavoir : MonoBehaviour
     void Start()
     {
         SetRandomType();
-        SetRandomName(Random.Range(1,4) + Random.Range(1,4));
+        int wordMinlenght = (type + 1) * 2;
+        SetRandomName(Random.Range(wordMinlenght, wordMinlenght + 1));
         movespeed += Random.Range(-movespeed * speedRangePercent, movespeed * speedRangePercent);
         startSpeed = movespeed;
     }
@@ -26,14 +27,14 @@ public class EnemyBehavoir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (direction * movespeed) * Time.deltaTime;
+        float actVel = movespeed + (2 -type) / 2;
+        transform.position = transform.position + (direction * actVel) * Time.deltaTime;
     }
 
     public void SetRandomName(int wordLenght)
     {
         LogicScript ls = GameObject.Find("LogicScript").GetComponent<LogicScript>();
         UtilsScript utils = GameObject.Find("Utils").GetComponent<UtilsScript>();
-        if (utils == null) Debug.Log("Utils is null");
         if (ls.GetLanguage().Equals("en"))
         {
             textname.text = utils.GetRandomEngWordWithLenght(wordLenght).ToLower();

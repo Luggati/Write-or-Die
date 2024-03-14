@@ -13,9 +13,9 @@ public class EnemyHandler : MonoBehaviour
     public GameObject logicScript;
     public GameObject utils;
 
-    public float spawnrate = 2;
+    public float spawInterval = 2.2f;
     private float timer = 2;
-    float spawnOffset = 14;
+    float spawnOffset = 12;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class EnemyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawnrate)
+        if (timer < spawInterval)
         {
             timer = timer + Time.deltaTime;
         }
@@ -40,14 +40,15 @@ public class EnemyHandler : MonoBehaviour
 
     public void spawnEnemy()
     {
-        float lowestPoint = transform.position.y - spawnOffset + 2.0f;
+        float lowestPoint = transform.position.y - spawnOffset;
         float highestPoint = transform.position.y + spawnOffset;
 
         Vector3 direction = Vector3.Normalize(new Vector3(5, 0, 0) - transform.position);
         GameObject enemy = Instantiate(enemys, 
-            new Vector3(transform.position.x, 
-            Random.Range(lowestPoint, highestPoint), 0), 
-            Quaternion.LookRotation(Vector3.forward, direction));
+                new Vector3(transform.position.x, 
+                Random.Range(lowestPoint, highestPoint), 0), 
+                Quaternion.LookRotation(Vector3.forward, direction));
+
         enemy.GetComponent<EnemyBehavoir>().SetEnemyDirection(direction);
         enemy.GetComponent<EnemyBehavoir>().SetTextColor(GameObject.Find("UI").GetComponent<UiSettings>().GetActiveColor());
 
@@ -57,18 +58,13 @@ public class EnemyHandler : MonoBehaviour
     {
         // Finde alle Gegner im Spiel
         EnemyBehavoir[] enemies = FindObjectsOfType<EnemyBehavoir>();
-        string firstLetter = userInput[0].ToString();
-        string restOfWord = userInput[1..];
 
         foreach (EnemyBehavoir enemy in enemies)
         {
             // Vergleiche den User-Input mit jedem Gegner-Wort
-            if (restOfWord.Equals(enemy.GetEnmyText(), System.StringComparison.OrdinalIgnoreCase) 
-                && int.TryParse(firstLetter, out int shotType))
+            if (userInput.Equals(enemy.GetEnmyText(), System.StringComparison.OrdinalIgnoreCase))
             {
-                //TODO: Waffenauswahl derzeit it 1,2,3. Wenn mit Buchstaben, if-Abfrage hier einfügen
-                //z.B. if (firstLetter == "a" -> shotType = 0-2)
-                gun.GetComponent<GunScript>().Fire(enemy, shotType - 1);
+                gun.GetComponent<GunScript>().Fire(enemy);
                 
                 inputField.text = ""; // Lösche das InputField für die nächste Eingabe
                 return; // Beende die Schleife, da das Wort gefunden wurde

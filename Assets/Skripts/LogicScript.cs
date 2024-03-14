@@ -1,32 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static LogicScript;
 
 public class LogicScript : MonoBehaviour
 {
     public GameObject deathScreen;
     public GameObject menu;
     public GameObject hud;
+    public GameObject help;
     public InputField inputField;
     public GameObject cam;
     public GameObject enemyHandler;
     public GameObject ui;
     public GameObject startScreen;
     public GameObject currentInputUi;
+    public GameObject player;
+    public GameObject gun;
     bool isDead = false;
     
     int Health = 3;
     int currentScore = 0;
-    string scoreboard = "1000 Director Fury \n 604 Phil Collins \n 234 Anonymous";
+    public List<Dictionary<string, int>> sb = new List<Dictionary<string, int>>();
     string language = "en";
+    bool scoreAdded = false;
     List<string> prohibitedWords = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadScoreboard();
+
         Pause();
+        LoadPlayerPrefs();
 
         currentInputUi.SetActive(false);
         hud.SetActive(false);
@@ -38,14 +51,18 @@ public class LogicScript : MonoBehaviour
         SetProhibitedWords();
         inputField.text = "";
         inputField.ActivateInputField();
+
+        
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (Health <= 0)
+        if (Health <= 0 && isDead == false)
         {
             //TogglePause();
+            player.GetComponent<PlayerScript>().KillPlayer();
             deathScreen.GetComponent<DeathScreenScript>().SetCurrentScore();
             deathScreen.SetActive(true);
             isDead = true;
@@ -60,11 +77,12 @@ public class LogicScript : MonoBehaviour
     void CheckInput()
     {
         string input = inputField.text;
+        ui.GetComponent<UiSettings>().UpdateLastInputs(inputField.text);
         string[] inputPieces = input.Split(' ');
         switch (inputPieces[0])
         {
             case "menu":
-                ToggleMenu(true);
+                ToggleMenu(true, menu);
                 break;
             case "exit":
                 QuitGame();
@@ -73,18 +91,20 @@ public class LogicScript : MonoBehaviour
                 RestartGame();
                 break;
             case "help":
-                //TODO: create Tutorial-Screen
+                ToggleMenu(true, help);
                 break;
             case "start":
             case "resume":
-                ToggleMenu(false);
-                //TODO: Toggle help-Menu
+                ToggleMenu(false, null);
                 break;
             //TODO: case um seinen score im scoreboard mit seinem Namen hinzuzufügen
             case "1":
             case "2":
             case "3":
-                hud.GetComponent<HUDScript>().ChangeWeapon(int.Parse(inputField.text));
+            case "l":
+            case "r":
+            case "m":
+                ChangeWeapon(inputPieces);
                 break;
             case "volume":
                 if (inputPieces.Length == 2 && menu.activeSelf == true)
@@ -96,6 +116,7 @@ public class LogicScript : MonoBehaviour
                             break;
                         }
                         AudioListener.volume = (float)zahl / 100;
+                        PlayerPrefs.SetFloat("volume", AudioListener.volume);
                     }
                 }
                 break;
@@ -110,6 +131,9 @@ public class LogicScript : MonoBehaviour
                         }
                         Color color = new Color(x / 255f, y / 255f, z / 255f, 1f);
                         ui.GetComponent<UiSettings>().SetTextColor(color);
+                        PlayerPrefs.SetFloat("colorR", color.r);
+                        PlayerPrefs.SetFloat("colorG", color.g);
+                        PlayerPrefs.SetFloat("colorB", color.b);
                     }
 
                 }
@@ -121,9 +145,19 @@ public class LogicScript : MonoBehaviour
                     {
                         language = inputPieces[1];
                     }
+                    PlayerPrefs.SetString("language", language);
                 }
                 break;
-
+            case "score":
+                if (inputPieces.Length >= 2 && deathScreen.activeSelf == true && scoreAdded == false)
+                {
+                    print("Score added");
+                    AddToScoreboard(inputPieces[1], currentScore);
+                    scoreAdded = true;
+                    SaveScoreboard();
+                }
+                
+                break;
             default:
                 if (isDead == false)
                 {
@@ -132,6 +166,9 @@ public class LogicScript : MonoBehaviour
                 break;
         }
 
+        PlayerPrefs.SetString("settings", "volume colorR colorG colorB settings language");
+        PlayerPrefs.Save();
+        
         inputField.text = ""; // Setze das Input Field zurück
         inputField.ActivateInputField(); // Setze den Fokus zurück auf das Input Field
         inputField.Select(); // Wähle das Input Field aus, um sicherzustellen, dass der Cursor sichtbar bleibt
@@ -140,8 +177,54 @@ public class LogicScript : MonoBehaviour
         
     }
 
+    void ChangeWeapon(string[] input)
+    {
+        int type = ConvertInputToWeapon(input[0]);
+
+        if (type == -1)
+        {
+            return;
+        }
+
+        hud.GetComponent<HUDScript>().ChangeWeapon(type);
+        gun.GetComponent<GunScript>().SetWeaponType(type);
+
+        if (input.Length == 2) 
+        {
+            if (isDead == false)
+            {
+                enemyHandler.GetComponent<EnemyHandler>().CheckInput(input[1]);
+            }
+        }
+    }
+
+    int ConvertInputToWeapon(string input)
+    {
+        if (input.Equals("l"))
+        {
+            return 1;
+        }
+        else if (input.Equals("r"))
+        {
+            return 2;
+        }
+        else if (input.Equals("m"))
+        {
+            return 0;
+        }
+        else if (int.TryParse(input, out int type))
+        {
+            return type - 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
     void RestartGame()
     {
+        player.GetComponent<PlayerScript>().ResetPlayer();
         EnemyBehavoir enemys = FindObjectOfType<EnemyBehavoir>();
         foreach (EnemyBehavoir enemy in FindObjectsOfType<EnemyBehavoir>())
         {
@@ -152,26 +235,86 @@ public class LogicScript : MonoBehaviour
         currentScore = 0;
         Health = 3;
         isDead = false;
-        ToggleMenu(false);
+        ToggleMenu(false, null);
+        scoreAdded = false;
     }
 
-    void ToggleMenu(bool enableMenu)
+    void ToggleMenu(bool enableMenu, GameObject go)
     {
         if (enableMenu)
         {
             Pause();
             hud.SetActive(false);
             currentInputUi.SetActive(false);
-            menu.SetActive(true);
+            go.SetActive(true);
             hud.SetActive(true);
             currentInputUi.SetActive(true);
         } else
         {
             menu.SetActive(false);
             startScreen.SetActive(false);
+            help.SetActive(false);
             hud.SetActive(true);
             UnPause();
         }
+    }
+
+    void LoadPlayerPrefs()
+    {
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
+        language = PlayerPrefs.GetString("language");
+    }
+
+    void AddToScoreboard(string name, int score)
+    {
+        Dictionary<string, int> entry = new Dictionary<string, int>();
+        entry.Add(name, score);
+        sb.Add(entry);
+    }
+
+    void SaveScoreboard()
+    {
+        sb = sb.OrderBy(x => x.Values).ToList();
+
+        if (sb.Count > 5)
+        {
+            sb = sb.GetRange(0, 5);
+        }
+
+        string path = "Assets/scoreboard.json";
+        string json = JsonUtility.ToJson(sb);
+        File.WriteAllText(path, json);
+    }
+
+    void LoadScoreboard()
+    {
+        string fileName = "Assets/scoreboard.json";
+        if (File.Exists(fileName))
+        {
+            string json = File.ReadAllText(fileName);
+            sb = JsonUtility.FromJson<List<Dictionary<string, int>>>(json);
+        }
+        else
+        {
+            sb = new List<Dictionary<string, int>>();
+        }
+    }
+
+    string ScoreboardToString()
+    {
+        string result = "";
+        if (sb.Count != 0)
+        {
+            foreach (Dictionary<string, int> entry in sb)
+            {
+                foreach (var pair in entry)
+                {
+                    result += pair.Key + " " + pair.Value + "\n";
+                } 
+            }
+        }
+        
+        return result;
     }
 
 
@@ -211,9 +354,9 @@ public class LogicScript : MonoBehaviour
         return Health;
     }
 
-    public string GetScoreboard()
+    public string GetScoreboardAsString()
     {
-        return scoreboard;
+        return ScoreboardToString();
     }
 
     public string GetLanguage()
@@ -250,6 +393,13 @@ public class LogicScript : MonoBehaviour
     {
         print("Exit Game");
         //Application.Quit();
+    }
+
+    [Serializable]
+    public class ScoreBoard
+    {
+        public List<string> playerNames;
+        public List<string> scores;
     }
 
 }

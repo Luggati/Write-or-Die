@@ -13,20 +13,23 @@ public class HUDScript : MonoBehaviour
     public GameObject logicScript;
     public Text scoreboardTf;
     public InputField inputFied;
+    public Text weapon0;
     public Text weapon1;
     public Text weapon2;
-    public Text weapon3;
     public Text lifecounterTF;
     public Text currentScore;
     public Text commandListTf;
     public GameObject uiScript;
     public Text menuCommands;
 
+    string sb;
+
     // Start is called before the first frame update
     void Start()
     {
-        scoreboardTf.text = logicScript.GetComponent<LogicScript>().GetScoreboard();
-        commandListTf.text = "\"help\" \n \"menu\" \n \"resume\" \n \"restart\" \n \"exit\" \n \n Weapons: \n Laser 1: \"L\" \n Railgun 2: \"R\" \n Missile 3: \"M\"";
+        sb = logicScript.GetComponent<LogicScript>().GetScoreboardAsString();
+        scoreboardTf.text = sb;
+        commandListTf.text = "\"help\" \n \"menu\" \n \"resume\" \n \"restart\" \n \"exit\" \n \n Weapons: \n Missile: \"m\" \n Laser: \"l\" \n Railgun: \"r\"";
         UpdateText();
 
     }
@@ -44,23 +47,23 @@ public class HUDScript : MonoBehaviour
 
     public void ChangeWeapon(int type)
     {
-        if (type == 1)
+        if (type == 0)
         {
+            weapon0.tag = "Untagged";
+            weapon1.tag = "Inaktive";
+            weapon2.tag = "Inaktive";
+        }
+        else if (type == 1)
+        {
+            weapon0.tag = "Inaktive";
             weapon1.tag = "Untagged";
             weapon2.tag = "Inaktive";
-            weapon3.tag = "Inaktive";
         }
         else if (type == 2)
         {
-            weapon1.tag = "Inaktive";
             weapon2.tag = "Untagged";
-            weapon3.tag = "Inaktive";
-        }
-        else if (type == 3)
-        {
-            weapon3.tag = "Untagged";
+            weapon0.tag = "Inaktive";
             weapon1.tag = "Inaktive";
-            weapon2.tag = "Inaktive";
         }
         uiScript.GetComponent<UiSettings>().UpdateWeaponColor();
     }
@@ -68,7 +71,8 @@ public class HUDScript : MonoBehaviour
     public void UpdateText()
     {
         lifeCounter.text = "Health: " + logicScript.GetComponent<LogicScript>().GetHealth();
-        currentScore.text = "Your Score: " + logicScript.GetComponent<LogicScript>().GetCurrentScore();
+        currentScore.text = "Kills: " + logicScript.GetComponent<LogicScript>().GetCurrentScore();
+        scoreboardTf.text = sb;
 
         Color color = uiScript.GetComponent<UiSettings>().GetActiveColor();
         string lang = logicScript.GetComponent<LogicScript>().GetLanguage();
