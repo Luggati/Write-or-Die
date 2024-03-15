@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class HUDScript : MonoBehaviour
 {
@@ -27,7 +22,7 @@ public class HUDScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        commandListTf.text = "\"help\" \n \"menu\" \n \"resume\" \n \"restart\" \n \"exit\" \n \n Weapons: \n Missile: \"m\" \n Laser: \"l\" \n Railgun: \"r\"";
+        commandListTf.text = "\"help\" \n \"menu\" \n \"resume\" \n \"restart\" \n \"exit\" \n \"credits\" \n \n Weapons: \n Missile: \"m\" \n Laser: \"l\" \n Railgun: \"r\"";
         UpdateText();
     }
 

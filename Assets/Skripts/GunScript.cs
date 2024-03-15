@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject shot;
-    AudioSource shotAudio;
+    AudioSource[] shotAudio;
     bool lastWeapon = true;
     int weaponType = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        shotAudio = gameObject.GetComponent<AudioSource>();
+        shotAudio = gameObject.GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,11 +23,12 @@ public class GunScript : MonoBehaviour
     public void Fire(EnemyBehavoir enemy)
     {
         float enemyVelocity = enemy.movespeed;
-        Vector3 enemyPos = enemy.transform.position - new Vector3(enemyVelocity/5,0,0);  // enemyPos wird vorhergesagt
+        Vector3 enemyRealPos = enemy.GetComponent<Collider2D>().transform.position;
+        Vector3 enemyPos = enemyRealPos - new Vector3(enemyVelocity/5,0,0);  // enemyPos wird vorhergesagt
         Vector3 direction = Vector3.Normalize(enemyPos - transform.position);  // Richtung des Schusses
         
         GameObject newShot = Instantiate(shot) as GameObject;
-        shotAudio.Play();
+        shotAudio[weaponType].Play();
         TriggerShotAnimation();
 
         newShot.transform.position = transform.position;    // Schuss wird an der Gun des Spielers erstellt

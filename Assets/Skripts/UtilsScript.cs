@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
-using System;
-using Random = UnityEngine.Random;
 using System.Linq;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class UtilsScript : MonoBehaviour
@@ -18,8 +16,9 @@ public class UtilsScript : MonoBehaviour
     void Start()
     {
         // Lese die Daten aus der txt Datei ein
-        List<string> gerWordsUnsorted = new List<string>(File.ReadAllLines("Assets/gerWords.txt"));
-        List<string> engWordsUnsorted = new List<string>(File.ReadAllLines("Assets/engWords.txt"));
+        string prepath = Application.streamingAssetsPath;
+        List<string> gerWordsUnsorted = new List<string>(File.ReadAllLines(prepath + "/gerWords.txt"));
+        List<string> engWordsUnsorted = new List<string>(File.ReadAllLines(prepath + "/engWords.txt"));
 
         germanWords = gerWordsUnsorted.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToList());
         englishWords = engWordsUnsorted.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToList());

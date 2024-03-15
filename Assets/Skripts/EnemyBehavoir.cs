@@ -1,8 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 using UnityEngine.UI;
 
 public class EnemyBehavoir : MonoBehaviour
@@ -10,18 +6,23 @@ public class EnemyBehavoir : MonoBehaviour
     public float movespeed = 4.5f;
     public Text textname;
     int type;
-    float speedRangePercent = 0.15f;
+    float speedRangePercent = 0.05f;
     float startSpeed;
     Vector3 direction;
+    Color[] colors = { Color.yellow, Color.cyan, Color.red, Color.green, Color.magenta };
+    AudioSource[] deathsounds;
 
     // Start is called before the first frame update
     void Start()
     {
         SetRandomType();
         int wordMinlenght = (type + 1) * 2;
-        SetRandomName(Random.Range(wordMinlenght, wordMinlenght + 1));
+        SetRandomName(Random.Range(wordMinlenght, wordMinlenght + 2));
+        deathsounds = GetComponents<AudioSource>();
         movespeed += Random.Range(-movespeed * speedRangePercent, movespeed * speedRangePercent);
         startSpeed = movespeed;
+
+        
     }
 
     // Update is called once per frame
@@ -37,18 +38,28 @@ public class EnemyBehavoir : MonoBehaviour
         UtilsScript utils = GameObject.Find("Utils").GetComponent<UtilsScript>();
         if (ls.GetLanguage().Equals("en"))
         {
-            textname.text = utils.GetRandomEngWordWithLenght(wordLenght).ToLower();
+            textname.text = "" + utils.GetRandomEngWordWithLenght(wordLenght).ToLower();
         }
         else
         {
-            textname.text = utils.GetRandomGerWordWithLenght(wordLenght).ToLower();
+            textname.text = "" + utils.GetRandomGerWordWithLenght(wordLenght).ToLower();
         }
     }
 
     void SetRandomType()
     {
-        type = Random.Range(0, 3);
+        int roll = Random.Range(0, 100);
+        if (roll > 30)
+        {
+            type = Random.Range(0, 3);
+        }
+        else
+        {
+            type = Random.Range(3, 5);
+        }
+        
         transform.GetChild(type).gameObject.SetActive(true);
+        textname.color = colors[type];
     }
 
     public void SetEnemyDirection(Vector3 newDirection)
@@ -74,6 +85,41 @@ public class EnemyBehavoir : MonoBehaviour
     public void SetTextColor(Color color)
     {
         textname.color = color;
+    }
+
+    public void Destroy()
+    {
+        if (type <= 2)
+        {
+            deathsounds[type].Play();
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            transform.GetChild(type).gameObject.GetComponentInChildren<Animator>().Play("Destroy");
+            GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseScore(1);
+        }
+        else if (type == 3)
+        {
+            GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseHealth(1);
+            DeleteEnemy();
+        }
+        else if (type == 4)
+        {
+            EnemyBehavoir[] enemies = FindObjectsOfType<EnemyBehavoir>();
+            foreach (EnemyBehavoir enemy in enemies)
+            {
+                if (enemy.GetEnemyType() <= 2)
+                {
+                    enemy.Destroy();
+                }
+            }
+            DeleteEnemy();
+        }
+        
+        
+    }
+
+    public void DeleteEnemy()
+    {
+        Destroy(gameObject);
     }
 
 }

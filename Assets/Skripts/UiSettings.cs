@@ -1,11 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Search;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
@@ -24,6 +17,7 @@ public class UiSettings : MonoBehaviour
     public GameObject weapon2;
     public GameObject lastInputs;
     public GameObject helpScreen;
+
     Color aktiveColor;
     Color inaktiveColor;
 
@@ -73,11 +67,9 @@ public class UiSettings : MonoBehaviour
         foreach (Text tf in tfs)
         {
             tf.color = aktiveColor;
-            if(tf.tag == "Inaktive")
-            {
-                tf.color = inaktiveColor;
-            }
         }
+
+        UpdateWeaponColor();
     }
 
     void LoadColor()
@@ -88,7 +80,7 @@ public class UiSettings : MonoBehaviour
         }
         else
         {
-            SetTextColor(Color.red);
+            SetTextColor(Color.white);
         }
     }
 
@@ -109,15 +101,16 @@ public class UiSettings : MonoBehaviour
 
     public void UpdateWeaponColor()
     {
+        weapon0.GetComponent<Text>().color = Color.yellow;
+        weapon1.GetComponent<Text>().color = Color.cyan;
+        weapon2.GetComponent<Text>().color = Color.red;
+
         foreach (GameObject go in weapons)
         {
-            if (go.tag == "Untagged")
+            Color col = go.GetComponent<Text>().color;
+            if (go.tag == "Inaktive")
             {
-                go.GetComponent<Text>().color = aktiveColor;
-            }
-            else
-            {
-                go.GetComponent<Text>().color = inaktiveColor;
+                go.GetComponent<Text>().color = new Color(col.r, col.g, col.b, 0.25f);
             }
         }
     }

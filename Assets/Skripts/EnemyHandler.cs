@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 
 public class EnemyHandler : MonoBehaviour
 {
@@ -33,6 +29,11 @@ public class EnemyHandler : MonoBehaviour
         else
         {
             spawnEnemy();
+            if (spawnInterval > 0.5f)
+            {
+                spawnInterval = spawnInterval - 0.01f;
+            }
+            
             timer = 0;
         }
 
@@ -50,9 +51,9 @@ public class EnemyHandler : MonoBehaviour
                 Quaternion.LookRotation(Vector3.forward, direction));
 
         enemy.GetComponent<EnemyBehavoir>().SetEnemyDirection(direction);
-        enemy.GetComponent<EnemyBehavoir>().SetTextColor(GameObject.Find("UI").GetComponent<UiSettings>().GetActiveColor());
+        //enemy.GetComponent<EnemyBehavoir>().SetTextColor(GameObject.Find("UI").GetComponent<UiSettings>().GetActiveColor());
 
-        spawnInterval = spawnInterval - 0.01f;
+        
     }
 
     public void CheckInput(string userInput)

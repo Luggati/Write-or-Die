@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotScript : MonoBehaviour
 {
 
     Vector3 shotDirection;
-    int velocity = 50;
+    int velocity = 70;
     int type;
 
     // Start is called before the first frame update
@@ -18,7 +16,7 @@ public class ShotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int actVel = velocity + (3 - type) * 15;
+        int actVel = velocity + (2 - type) * 10;
         transform.position += shotDirection * actVel * Time.deltaTime;
 
         Vector3 pos = transform.position;
@@ -33,12 +31,11 @@ public class ShotScript : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-            if (other.GetComponent<EnemyBehavoir>().GetEnemyType() == type)
+            int enemyType = other.GetComponent<EnemyBehavoir>().GetEnemyType();
+            if (enemyType > 2 || enemyType == type)
             {
-                GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseScore(1);
-                Destroy(other.gameObject);
+                other.GetComponent<EnemyBehavoir>().Destroy();
             }
-            
         }
     }
 

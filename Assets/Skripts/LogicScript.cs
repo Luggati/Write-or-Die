@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static LogicScript;
 
 public class LogicScript : MonoBehaviour
 {
@@ -21,6 +16,7 @@ public class LogicScript : MonoBehaviour
     public GameObject cam;
     public GameObject enemyHandler;
     public GameObject ui;
+    public GameObject credits;
     public GameObject startScreen;
     public GameObject currentInputUi;
     public GameObject player;
@@ -98,7 +94,9 @@ public class LogicScript : MonoBehaviour
             case "resume":
                 ToggleMenu(false, null);
                 break;
-            //TODO: case um seinen score im scoreboard mit seinem Namen hinzuzufügen
+            case "credits":
+                ToggleMenu(true, credits);
+                break;
             case "1":
             case "2":
             case "3":
@@ -233,7 +231,9 @@ public class LogicScript : MonoBehaviour
         deathScreen.SetActive(false);
         currentScore = 0;
         Health = 3;
+        enemyHandler.GetComponent<EnemyHandler>().spawnInterval = 2.2f;
         isDead = false;
+        ChangeWeapon(new string[]{"m"});
         ToggleMenu(false, null);
         scoreAdded = false;
     }
@@ -253,6 +253,7 @@ public class LogicScript : MonoBehaviour
             menu.SetActive(false);
             startScreen.SetActive(false);
             help.SetActive(false);
+            credits.SetActive(false);
             hud.SetActive(true);
             UnPause();
         }
@@ -287,6 +288,11 @@ public class LogicScript : MonoBehaviour
         {
             Health--;
         }
+    }
+
+    public void IncreaseHealth(int amount)
+    {
+        Health += amount;
     }
 
     public void IncreaseScore(int score)
@@ -353,7 +359,7 @@ public class LogicScript : MonoBehaviour
     public void QuitGame()
     {
         print("Exit Game");
-        //Application.Quit();
+        Application.Quit();
     }
 
     [Serializable]

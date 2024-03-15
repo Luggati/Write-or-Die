@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -32,8 +30,9 @@ public class PlayerScript : MonoBehaviour
 
     public void KillPlayer()
     {
-        playerEngineAnimator.SetTrigger("Destroy");
-        playerWeaponAnimator.SetTrigger("Destroy");
+        playerWeaponAnimator.Play("Explosion");
+        playerEngineAnimator.Play("End");
+        
         //ship.enabled = false;
     }
 
@@ -42,8 +41,8 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = orgiginalRotation;
         targetRotation = orgiginalRotation;
         playerWeaponAnimator.GetComponent<Renderer>().enabled = true;
-        playerWeaponAnimator.SetTrigger("Reset");
-        playerEngineAnimator.SetTrigger("Reset");
+        playerWeaponAnimator.Play("Idle");
+        playerEngineAnimator.Play("Engine");
         
         //ship.enabled = true;
     }

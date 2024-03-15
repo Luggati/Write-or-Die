@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BorderSkript : MonoBehaviour
@@ -23,7 +21,10 @@ public class BorderSkript : MonoBehaviour
 
         if (col.gameObject.CompareTag("Enemy"))
         {
-            logicScript.GetComponent<LogicScript>().DecreaseHealth();
+            if (col.GetComponent<EnemyBehavoir>().GetEnemyType() <= 2)
+            {
+                logicScript.GetComponent<LogicScript>().DecreaseHealth();
+            }
             Destroy(col.gameObject);
         }
     }
