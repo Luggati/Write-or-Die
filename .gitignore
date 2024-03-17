@@ -1,0 +1,10 @@
+Library/
+Temp/
+Build/
+Recordings/
+obj
+Assembly-CSharp.csproj
+*.sln
+*.csproj
+.vs/
+*.cpt
