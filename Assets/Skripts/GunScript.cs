@@ -22,13 +22,14 @@ public class GunScript : MonoBehaviour
 
     public void Fire(EnemyBehavoir enemy)
     {
+        shotAudio[weaponType].Play();
         float enemyVelocity = enemy.movespeed;
         Vector3 enemyRealPos = enemy.GetComponent<Collider2D>().transform.position;
         Vector3 enemyPos = enemyRealPos - new Vector3(enemyVelocity/5,0,0);  // enemyPos wird vorhergesagt
         Vector3 direction = Vector3.Normalize(enemyPos - transform.position);  // Richtung des Schusses
         
         GameObject newShot = Instantiate(shot) as GameObject;
-        shotAudio[weaponType].Play();
+        
         TriggerShotAnimation();
 
         newShot.transform.position = transform.position;    // Schuss wird an der Gun des Spielers erstellt

@@ -17,6 +17,7 @@ public class UiSettings : MonoBehaviour
     public GameObject weapon2;
     public GameObject lastInputs;
     public GameObject helpScreen;
+    public GameObject creditsScreen;
 
     Color aktiveColor;
     Color inaktiveColor;
@@ -42,6 +43,7 @@ public class UiSettings : MonoBehaviour
         coreComp.Add(startScreen);
         coreComp.Add(lastInputs);
         coreComp.Add(helpScreen);
+        coreComp.Add(creditsScreen);
 
 
         foreach (GameObject go in coreComp)

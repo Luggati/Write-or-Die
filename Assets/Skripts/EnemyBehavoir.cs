@@ -49,7 +49,7 @@ public class EnemyBehavoir : MonoBehaviour
     void SetRandomType()
     {
         int roll = Random.Range(0, 100);
-        if (roll > 30)
+        if (roll > 8)
         {
             type = Random.Range(0, 3);
         }

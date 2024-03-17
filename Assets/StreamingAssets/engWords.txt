@@ -262,7 +262,7 @@ offer
 least
 run
 small
-it's
+it
 operating
 current
 Windows
@@ -346,7 +346,7 @@ hard
 added
 House
 local
-company's
+company
 law
 world
 right
@@ -367,7 +367,7 @@ become
 features
 fell
 late
-It's
+It
 news
 San
 important
@@ -406,7 +406,7 @@ investment
 John
 An
 came
-didn't
+didn
 chairman
 US
 find
@@ -448,7 +448,6 @@ life
 common
 changes
 DOS
-doesn't
 further
 top
 decision
@@ -610,11 +609,9 @@ gas
 areas
 trying
 force
-isn't
 funds
 lost
 once
-can't
 server
 Texas
 OS
@@ -706,7 +703,6 @@ school
 position
 previous
 bid
-won't
 Stock
 outside
 Group
@@ -833,7 +829,7 @@ assets
 card
 short
 What
-I'm
+I
 credit
 doing
 World
@@ -926,7 +922,7 @@ August
 buying
 command
 directly
-nation's
+nation
 fiscal
 X
 develop
@@ -1012,7 +1008,7 @@ notes
 written
 build
 Chicago
-that's
+that
 Western
 yield
 Management
@@ -1093,7 +1089,7 @@ region
 spent
 room
 advantage
-you're
+you
 Another
 planning
 testing
@@ -1158,7 +1154,7 @@ executives
 versions
 Y
 bought
-IBM's
+IBM
 gives
 changed
 survey
@@ -1179,9 +1175,9 @@ coal
 variety
 determine
 despite
-year's
+year
 China
-wasn't
+wasn
 hope
 utility
 option
@@ -1241,7 +1237,6 @@ internal
 ways
 O
 morning
-aren't
 Dukakis
 request
 joint
@@ -1319,7 +1314,7 @@ prison
 class
 sector
 a.m.
-wouldn't
+would
 details
 refused
 material
@@ -1340,7 +1335,7 @@ elections
 talk
 integrated
 majority
-couldn't
+could
 tell
 poor
 Jan
@@ -1352,7 +1347,7 @@ Ltd
 engineering
 Canadian
 Administration
-there's
+there
 taxes
 ordered
 Communications
@@ -1366,7 +1361,7 @@ cable
 agencies
 voice
 heat
-That's
+That
 film
 send
 components
@@ -1418,7 +1413,7 @@ advanced
 accounts
 client
 long-term
-we're
+we
 surface
 suggested
 feet
@@ -1505,7 +1500,7 @@ status
 Francisco
 retail
 techniques
-they're
+they
 fields
 regulations
 placed
@@ -1589,7 +1584,7 @@ outstanding
 fair
 VGA
 Force
-hasn't
+has
 adds
 Development
 properties
@@ -1608,7 +1603,6 @@ flight
 controls
 competitive
 appropriate
-I've
 factors
 alternative
 son
@@ -1626,7 +1620,7 @@ intended
 prepared
 mostly
 items
-government's
+government
 factor
 music
 chips
@@ -1708,7 +1702,7 @@ child
 starting
 listed
 Our
-country's
+country
 anyone
 VAX
 configuration
@@ -1741,7 +1735,6 @@ sound
 Arab
 Park
 speech
-he's
 directors
 capability
 dead
@@ -1806,10 +1799,9 @@ housing
 entry
 knowledge
 England
-We're
 hands
 relationship
-world's
+world
 lives
 lawyer
 organizations
@@ -1915,7 +1907,7 @@ figs
 decisions
 finished
 decide
-There's
+There
 alleged
 direction
 launched
@@ -2057,7 +2049,7 @@ advance
 observed
 module
 select
-haven't
+have
 accident
 expressed
 fees
@@ -2088,7 +2080,6 @@ tasks
 actual
 PS
 lose
-you'll
 statements
 expand
 waiting
@@ -2116,7 +2107,6 @@ limits
 signs
 technologies
 purchased
-Corp.'s
 pass
 selection
 voted
@@ -2145,7 +2135,7 @@ experimental
 nationwide
 transmission
 faces
-Bush's
+Bush
 seemed
 adopted
 controlled
@@ -2229,7 +2219,7 @@ husband
 ban
 investor
 payment
-Japan's
+Japan
 bottom
 Middle
 reducing
@@ -2307,7 +2297,7 @@ Thus
 RISC
 communication
 transport
-today's
+today
 equal
 supporting
 century
@@ -2352,7 +2342,7 @@ extremely
 cutting
 Pentagon
 principal
-Apple's
+Apple
 THE
 efficient
 Price
@@ -2362,7 +2352,6 @@ millions
 achieve
 middle
 ounce
-Inc.'s
 industries
 x
 urged
@@ -2397,7 +2386,6 @@ reforms
 NBC
 describes
 views
-weren't
 happened
 Gov
 CA
@@ -2456,7 +2444,6 @@ society
 newspapers
 guerrillas
 western
-we've
 hear
 SCSI
 SEC
@@ -2500,7 +2487,7 @@ developer
 consultant
 college
 extension
-week's
+week
 dealer
 incident
 nearby
@@ -2569,7 +2556,7 @@ none
 pick
 Houston
 Virginia
-object-oriented
+objectoriented
 losing
 enable
 vehicle
@@ -5452,7 +5439,6 @@ Phillips
 Today's
 suburban
 midnight
-Europe's
 furniture
 Hutton
 Plan
@@ -5620,7 +5606,7 @@ transparent
 roof
 Code
 binding
-London's
+
 insists
 convenient
 cool
@@ -5673,7 +5659,6 @@ reviewing
 viewing
 Apollo
 Cruz
-Treasury's
 antitrust
 flows
 Token-Ring
@@ -5696,7 +5681,6 @@ Colombia
 online
 Ten
 instrument
-Novell's
 machinery
 voluntary
 evaluating
@@ -5753,7 +5737,6 @@ Media
 consolidation
 accepting
 mood
-Sun's
 Officer
 Hawaii
 Clinton
@@ -5860,7 +5843,7 @@ whereas
 phases
 mainstream
 Sprint
-Canada's
+Canada
 clashes
 infected
 sight
@@ -5941,7 +5924,7 @@ personally
 insurers
 absorption
 Internal
-Let's
+Let
 lab
 consistently
 dBase
@@ -6016,7 +5999,7 @@ suicide
 Cheney
 weaker
 legislature
-Iran's
+Iran
 high-quality
 Tower
 Aldus
@@ -6047,7 +6030,7 @@ enhancement
 OEM
 Fire
 wells
-she's
+she
 SCO
 clubs
 testify
@@ -6058,7 +6041,7 @@ counties
 gate
 adjacent
 Zealand
-you'd
+you
 violating
 tip
 sequences
@@ -6148,7 +6131,7 @@ Customs
 guidance
 accordance
 Silver
-children's
+children
 Action
 Interstate
 imagine
@@ -6211,7 +6194,7 @@ downturn
 Sandinistas
 strict
 induced
-We'll
+We
 monopoly
 occupation
 Link
@@ -6234,13 +6217,13 @@ enthusiasm
 Reed
 pork
 Belgium
-A's
+A
 Campeau
 suburb
 retailing
 palette
 verification
-who's
+who
 folks
 leased
 Ultrix
@@ -6268,7 +6251,7 @@ swept
 advocates
 Hamilton
 convenience
-NYSE's
+NYSE
 angle
 Case
 Montgomery
@@ -6311,7 +6294,7 @@ ash
 fed
 restrict
 CompuServe
-he'd
+he
 Money
 Kuwaiti
 relating
@@ -6329,7 +6312,7 @@ scripts
 evident
 underwriters
 featured
-people's
+people
 rough
 tension
 obligation
@@ -6374,7 +6357,7 @@ shelter
 FDIC
 transmit
 diffusion
-Sunday's
+Sunday
 aggressively
 queue
 households
@@ -6412,7 +6395,7 @@ tens
 BAT
 raid
 inner
-Software's
+Software
 costing
 Li
 mm
@@ -6460,7 +6443,6 @@ Eric
 Kidder
 pursuing
 rallied
-Nazi
 guest
 3.5-inch
 Regional
@@ -6584,7 +6566,7 @@ recommends
 Women
 energies
 privatisation
-You'll
+You
 automobile
 Armed
 ozone
@@ -6671,7 +6653,7 @@ Baltic
 Stevens
 Wyoming
 dioxide
-You're
+You
 DDE
 shoot
 perceived
@@ -6868,7 +6850,7 @@ syndrome
 races
 decay
 Ore
-we'd
+we
 Beverly
 converts
 bullet
@@ -6951,7 +6933,7 @@ deployment
 catalyst
 on-site
 definitive
-GM's
+GM
 curb
 experiences
 identifying
@@ -7009,7 +6991,7 @@ sentencing
 sulfur
 legally
 Kingdom
-Commission's
+Commission
 thickness
 focuses
 four-year
@@ -7020,7 +7002,7 @@ Peabody
 nominated
 eliminates
 3rd
-Africa's
+Africa
 technically
 Oliver
 loyal
@@ -7076,7 +7058,6 @@ Entertainment
 plaintiffs
 Docket
 factions
-he'll
 occasional
 invaded
 Card
@@ -7116,7 +7097,7 @@ physically
 frequencies
 cruise
 PBX
-France's
+France
 Chapel
 Editor
 Broadway
@@ -7132,7 +7113,7 @@ assurance
 TIFF
 obstacles
 hang
-let's
+let
 Should
 Veterans
 tariffs
@@ -7218,7 +7199,6 @@ Roh
 Ali
 Funeral
 opponent
-rape
 flames
 arriving
 adverse
@@ -7293,7 +7273,7 @@ Go
 condemned
 Jeffrey
 Future
-court's
+court
 diesel
 desirable
 exploit
@@ -7324,7 +7304,7 @@ Cos
 sooner
 sorts
 Nebraska
-McDonald's
+McDonald
 blew
 hero
 elimination
@@ -7332,7 +7312,7 @@ quantum
 scaling
 hybrid
 Politburo
-Compaq's
+Compaq
 correspondent
 Keating
 farms
@@ -7489,7 +7469,7 @@ slip
 typefaces
 simplify
 simulated
-unit's
+unit
 landscape
 optimized
 Tandem
@@ -7626,11 +7606,11 @@ grocery
 duplicate
 MR
 earning
-California's
+California
 Nippon
 pipes
 BP
-family's
+family
 two-day
 formatted
 feasible
@@ -7745,12 +7725,12 @@ terrorists
 distributing
 harsh
 enthusiastic
-man's
+man
 distant
 reply
 Marlin
 inspections
-Mexico's
+Mexico
 Olivetti
 substances
 cutbacks
@@ -7803,7 +7783,7 @@ Denmark
 Prudential-Bache
 Falls
 lady
-board's
+board
 protective
 Bakker
 wounds
@@ -7850,7 +7830,7 @@ cancel
 accumulated
 insured
 Michel
-Poland's
+Poland
 awareness
 practically
 flash
@@ -7866,7 +7846,7 @@ encounter
 Details
 electronically
 feeding
-Italy's
+Italy
 bay
 Mario
 Income
@@ -7903,7 +7883,7 @@ Rochester
 sodium
 Care
 Valdez
-Union's
+Union
 presumably
 fueled
 jurisdiction
@@ -7914,7 +7894,7 @@ troop
 bunch
 80s
 prevents
-Digital's
+Digital
 coordination
 Salinas
 CGA
@@ -7922,7 +7902,7 @@ conversations
 Global
 aided
 panic
-Ford's
+Ford
 Milwaukee
 Chicago-based
 ppm
@@ -7934,7 +7914,7 @@ invitation
 gamma
 approximation
 constitute
-product's
+product
 advocate
 thorough
 Thornburgh
@@ -8052,13 +8032,13 @@ keystrokes
 truce
 crazy
 extract
-they'd
+they
 activation
 radicals
 Centre
 ISA
 kid
-Brazil's
+Brazil
 Paramount
 LaserWriter
 debris
@@ -8122,7 +8102,7 @@ couples
 scans
 midday
 classroom
-Fed's
+Fed
 Aircraft
 90s
 trick
@@ -8216,16 +8196,15 @@ BBC
 cholesterol
 Agricultural
 nearest
-Here's
+Here
 clarify
 End
-They've
+They
 exceeding
 delegate
 tighter
 shutdown
 multiprocessor
-O'Connor
 mount
 pumps
 subjected
@@ -8242,7 +8221,7 @@ spur
 Pierce
 timetable
 individually
-judge's
+judge
 journey
 Rule
 chaos
@@ -8275,7 +8254,7 @@ undergoing
 specializes
 setback
 UX
-Mac's
+Mac
 relate
 Cuomo
 incompatible
@@ -8333,7 +8312,7 @@ Hanson
 keen
 BBS
 deadly
-Eastern's
+Eastern
 backups
 nevertheless
 Document
@@ -8569,7 +8548,7 @@ bypass
 Temperatures
 undisclosed
 Ceausescu
-governor's
+governor
 unsecured
 encryption
 Annual
@@ -8642,7 +8621,7 @@ sounded
 cry
 dairy
 depreciation
-woman's
+woman
 et
 finishing
 contention
@@ -8653,7 +8632,7 @@ Heavy
 soaring
 receipt
 streams
-union's
+union
 solvent
 dots
 Lisa
@@ -8667,8 +8646,7 @@ Wolf
 Bryan
 imposing
 inspector
-sheriff's
-diversified
+sheriff
 Edwin
 slashed
 staffers
@@ -8747,7 +8725,7 @@ belongs
 rhetoric
 relied
 Johannesburg
-Korea's
+Korea
 ski
 Obviously
 critic
@@ -8809,7 +8787,7 @@ black-and-white
 Carlo
 Traffic
 continuously
-Lloyd's
+Lloyd
 voluntarily
 Camp
 tackle
@@ -8878,14 +8856,14 @@ programmed
 uncertainties
 royalties
 quotes
-Saturday's
+Saturday
 gates
 outlawed
 Danish
 sacrifice
 backward
 hard-line
-Jackson's
+Jackson
 IF
 Xenix
 Madison
@@ -8894,7 +8872,7 @@ rehabilitation
 Chevron
 parole
 OSHA
-Washington's
+Washington
 abstract
 tears
 specially
@@ -8915,7 +8893,7 @@ contingent
 injected
 micro
 Tribune
-other's
+other
 floors
 complexes
 RIP
@@ -8961,7 +8939,6 @@ Bancorp
 seal
 devised
 performer
-men's
 Ian
 time-consuming
 convincing
@@ -9010,7 +8987,7 @@ relaxed
 Copy
 thank
 MS
-India's
+India
 general-purpose
 moon
 Higher
@@ -9091,7 +9068,7 @@ fulfill
 threatens
 Commonwealth
 owes
-region's
+region
 Rodriguez
 pleasure
 grab
@@ -9103,11 +9080,11 @@ musicians
 Likud
 observer
 Rhode
-Navy's
+Navy
 Ky
 drafted
 Fourth
-father's
+father
 inherited
 scared
 subsidy
@@ -9121,7 +9098,7 @@ liquidation
 lure
 keyboards
 Meridian
-North's
+North
 sleeping
 retaining
 interval
@@ -9159,17 +9136,16 @@ Simple
 Smart
 gunfire
 interact
-Borland's
+Borland
 faulty
 notify
 Shaw
 piano
-Noriega's
+Noriega
 commissioned
 purely
 fortunes
 surviving
-O'Neill
 vague
 undermine
 kick
@@ -9268,8 +9244,8 @@ multi-user
 glasses
 Watson
 warming
-customer's
-computer's
+customer
+computer
 Speaking
 slash
 Regulations
@@ -9319,15 +9295,15 @@ freezing
 shield
 creditor
 promotional
-UK's
-NBC's
+UK
+NBC
 beaches
 periodically
 CMS
 selections
 Ivan
 Live
-Yesterday's
+Yesterday
 uncovered
 engage
 surfaced
@@ -9350,12 +9326,11 @@ Kan
 ingredients
 Scientific
 clicking
-attorney's
+attorney
 finger
 insulation
 Quantum
 shortfall
-She's
 doubling
 yielding
 AppleShare
@@ -9397,13 +9372,13 @@ outgoing
 Vancouver
 taxpayer
 recipient
-Less
+Les
 arrives
 Sununu
 Teamsters
 rifle
 signatures
-Street's
+Street
 prosperity
 Benjamin
 Morton
@@ -9586,7 +9561,7 @@ Format
 heroin
 merchants
 burial
-Children's
+Children
 Tory
 cites
 checker
@@ -9618,10 +9593,10 @@ systematic
 criterion
 issuance
 semiconductors
-Chrysler's
+Chrysler
 basement
 Levy
-school's
+school
 Eagle
 renewal
 formidable
@@ -9663,7 +9638,7 @@ lean
 essence
 cyclical
 negotiation
-organization's
+organization
 universe
 Polaroid
 Seagate
@@ -9691,7 +9666,7 @@ Koch
 Des
 cup
 grabbed
-You've
+You
 Choice
 Timetable
 devaluation
@@ -9708,7 +9683,7 @@ navy
 incredible
 initiate
 Byrd
-Army's
+Army
 wondering
 tonne
 struggled
@@ -9743,7 +9718,7 @@ breathing
 Cash
 donors
 Nunn
-PC's
+PC
 navigation
 midst
 seeds
@@ -9800,7 +9775,7 @@ Cemetery
 sauce
 word-processing
 loops
-NCR's
+NCR
 stole
 converter
 primitive
@@ -9842,17 +9817,16 @@ unfortunate
 TOPS
 Chuck
 steal
-general's
+general
 Investments
 defective
 jumping
 clout
 Castle
-Ashton-Tate's
 Residents
 Researchers
 aids
-committee's
+committee
 collaboration
 appropriations
 shortcomings
@@ -9868,9 +9842,8 @@ RTC
 surprises
 historically
 importantly
-3-1/2-inch
 visas
-Bank's
+Bank
 hydrocarbons
 usefulness
 ESDI
@@ -9879,7 +9852,7 @@ motive
 oils
 subsidized
 worrying
-Group's
+Group
 angular
 FY
 Anchorage
@@ -9916,12 +9889,12 @@ Virtual
 Summer
 obscure
 Robins
-vendor's
-dot-matrix
+vendor
+dotmatrix
 VAR
-four-day
+fourday
 Economists
-Motorola's
+Motorola
 imprisoned
 Klein
 Coke
@@ -9976,7 +9949,7 @@ expressing
 WASHINGTON
 Hyundai
 relieved
-Lebanon's
+Lebanon
 belonging
 valley
 prefers

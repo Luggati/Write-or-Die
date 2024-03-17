@@ -245,6 +245,9 @@ public class LogicScript : MonoBehaviour
             Pause();
             hud.SetActive(false);
             currentInputUi.SetActive(false);
+            menu.SetActive(true);
+            help.SetActive(false);
+            credits.SetActive(false);
             go.SetActive(true);
             hud.SetActive(true);
             currentInputUi.SetActive(true);
