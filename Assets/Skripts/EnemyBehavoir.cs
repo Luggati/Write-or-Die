@@ -8,8 +8,11 @@ public class EnemyBehavoir : MonoBehaviour
     int type;
     float speedRangePercent = 0.05f;
     float startSpeed;
+    bool hasArrived = false;
+
     Vector3 direction;
-    Color[] colors = { Color.yellow, Color.cyan, Color.red, Color.green, Color.magenta };
+    Vector3 destination;
+    Color[] colors = { Color.yellow, Color.cyan, Color.red, Color.green, Color.magenta, Color.white };
     AudioSource[] deathsounds;
 
     // Start is called before the first frame update
@@ -22,14 +25,42 @@ public class EnemyBehavoir : MonoBehaviour
         movespeed += Random.Range(-movespeed * speedRangePercent, movespeed * speedRangePercent);
         startSpeed = movespeed;
 
+        if (type == 5)
+        {
+            destination = transform.position - new Vector3(Random.Range(5,50),0,0);
+        }
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        float actVel = movespeed + (2 -type) / 2;
-        transform.position = transform.position + (direction * actVel) * Time.deltaTime;
+        float actVel = movespeed + (2 - type) / 2;
+        if (type == 5)
+        {
+            if (!hasArrived)
+            {
+                direction = destination - transform.position;
+                if (direction.magnitude < 1f)
+                {
+                    // TODO: play build-animation
+                    hasArrived = true;
+                }
+                else
+                {
+                    // TODO: destination in position.Translate einbinden
+                    transform.position = transform.position + (direction.normalized * actVel) * Time.deltaTime;
+                }
+            } 
+            else
+            {
+                // TODO: spawn Starbase (im enemyhandler die position dieses objektes hinzufügen. dort dann für jede postion in liste einen "normalen" enemy spawnwn lassen. 
+            }
+        }
+        else
+        {
+            transform.position = transform.position + (direction * actVel) * Time.deltaTime;
+        }
     }
 
     public void SetRandomName(int wordLenght)
@@ -38,24 +69,28 @@ public class EnemyBehavoir : MonoBehaviour
         UtilsScript utils = GameObject.Find("Utils").GetComponent<UtilsScript>();
         if (ls.GetLanguage().Equals("en"))
         {
-            textname.text = "" + utils.GetRandomEngWordWithLenght(wordLenght).ToLower();
+            textname.text = utils.GetRandomEngWordWithLenght(wordLenght).ToLower();
         }
         else
         {
-            textname.text = "" + utils.GetRandomGerWordWithLenght(wordLenght).ToLower();
+            textname.text = utils.GetRandomGerWordWithLenght(wordLenght).ToLower();
         }
     }
 
     void SetRandomType()
     {
         int roll = Random.Range(0, 100);
-        if (roll > 8)
+        if (roll > 50)
         {
             type = Random.Range(0, 3);
         }
+        else if (roll > 3)
+        {
+            type = 5;
+        }
         else
         {
-            type = Random.Range(3, 5);
+            type = Random.Range(3,5);
         }
         
         transform.GetChild(type).gameObject.SetActive(true);
@@ -111,6 +146,9 @@ public class EnemyBehavoir : MonoBehaviour
                     enemy.Destroy();
                 }
             }
+            DeleteEnemy();
+        } else if (type == 5)
+        {
             DeleteEnemy();
         }
         
