@@ -9,6 +9,8 @@ public class EnemyBehavoir : MonoBehaviour
     float speedRangePercent = 0.05f;
     float startSpeed;
     bool hasArrived = false;
+    bool isNatural = true;
+    int difficulty = 0;
 
     Vector3 direction;
     Vector3 destination;
@@ -18,6 +20,7 @@ public class EnemyBehavoir : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
         SetRandomType();
         int wordMinlenght = (type + 1) * 2;
         SetRandomName(Random.Range(wordMinlenght, wordMinlenght + 2));
@@ -27,7 +30,7 @@ public class EnemyBehavoir : MonoBehaviour
 
         if (type == 5)
         {
-            destination = transform.position - new Vector3(Random.Range(5,50),0,0);
+            destination = transform.position - new Vector3(Random.Range(5,30),0,0);
         }
         
     }
@@ -44,6 +47,7 @@ public class EnemyBehavoir : MonoBehaviour
                 if (direction.magnitude < 1f)
                 {
                     // TODO: play build-animation
+                    GameObject.Find("EnemyHandler").GetComponent<EnemyHandler>().AddActiveSpawner(transform.position);
                     hasArrived = true;
                 }
                 else
@@ -77,20 +81,45 @@ public class EnemyBehavoir : MonoBehaviour
         }
     }
 
+    void Initialize()
+    {
+        GameObject eh = GameObject.Find("EnemyHandler");
+        if (transform.position.x < eh.GetComponent<Transform>().position.x)
+        {
+            isNatural = false;
+        }
+
+        difficulty = eh.GetComponent<EnemyHandler>().GetDifficulty();
+    }
+
     void SetRandomType()
     {
-        int roll = Random.Range(0, 100);
-        if (roll > 50)
+        if (isNatural)
         {
-            type = Random.Range(0, 3);
-        }
-        else if (roll > 3)
-        {
-            type = 5;
+            int roll = Random.Range(0, 100);
+            if (roll > 8)
+            {
+                type = Random.Range(0, 3);
+            }
+            else if (roll > 3)
+            {
+                if (difficulty > 2)
+                {
+                    type = 5;
+                }
+                else
+                {
+                    type = Random.Range(0, 3);
+                }
+            }
+            else
+            {
+                type = Random.Range(3, 5);
+            }
         }
         else
         {
-            type = Random.Range(3,5);
+            type = Random.Range(0, 2);
         }
         
         transform.GetChild(type).gameObject.SetActive(true);
@@ -124,16 +153,17 @@ public class EnemyBehavoir : MonoBehaviour
 
     public void Destroy()
     {
+        LogicScript ls = GameObject.Find("LogicScript").GetComponent<LogicScript>();
         if (type <= 2)
         {
             deathsounds[type].Play();
             gameObject.GetComponent<Collider2D>().enabled = false;
             transform.GetChild(type).gameObject.GetComponentInChildren<Animator>().Play("Destroy");
-            GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseScore(1);
+            ls.IncreaseScore(1);
         }
         else if (type == 3)
         {
-            GameObject.Find("LogicScript").GetComponent<LogicScript>().IncreaseHealth(1);
+            ls.IncreaseHealth(1);
             DeleteEnemy();
         }
         else if (type == 4)
@@ -149,6 +179,8 @@ public class EnemyBehavoir : MonoBehaviour
             DeleteEnemy();
         } else if (type == 5)
         {
+            GameObject.Find("EnemyHandler").GetComponent<EnemyHandler>().RemoveActiveSpawner(transform.position);
+            ls.AddHexcores(1);
             DeleteEnemy();
         }
         

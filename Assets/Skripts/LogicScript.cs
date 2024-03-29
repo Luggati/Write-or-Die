@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
@@ -25,20 +27,26 @@ public class LogicScript : MonoBehaviour
     
     int Health = 3;
     int currentScore = 0;
+    int scrap = 0;
+    int hexcores = 0;
+    int difficulty = 2;
+    int maxDifficulty = 4;
     ScoreBoard sb;
     string language = "en";
+    string playerName;
     bool scoreAdded = false;
     List<string> prohibitedWords = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        sb = new ScoreBoard();
-        sb.LoadScoreboard();
-
         Pause();
         LoadPlayerPrefs();
 
+        sb = new ScoreBoard(maxDifficulty);
+        sb.LoadScoreboard();
+
+        enemyHandler.GetComponent<EnemyHandler>().UpdateDifficulty(difficulty);
 
         currentInputUi.SetActive(false);
         hud.SetActive(false);
@@ -67,14 +75,24 @@ public class LogicScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            CheckInput();
+            string input = inputField.text.TrimStart();
+            ui.GetComponent<UiSettings>().UpdateLastInputs(input);
+
+            if (startScreen.activeSelf)
+            {
+                playerName = input;
+                ToggleMenu(true, help);
+            }
+            else
+            {
+                CheckInput(input);
+            }
+            ResetInputField();
         }
     }
 
-    void CheckInput()
+    void CheckInput(string input)
     {
-        string input = inputField.text;
-        ui.GetComponent<UiSettings>().UpdateLastInputs(inputField.text);
         string[] inputPieces = input.Split(' ');
         switch (inputPieces[0])
         {
@@ -104,6 +122,17 @@ public class LogicScript : MonoBehaviour
             case "r":
             case "m":
                 ChangeWeapon(inputPieces);
+                break;
+            case "difficulty":
+                if (inputPieces.Length == 2 && menu.activeSelf == true)
+                {
+                    if (int.TryParse(inputPieces[1], out int zahl))
+                    {
+                        difficulty = Mathf.Clamp(zahl, 1, 4);
+                        PlayerPrefs.SetInt("difficulty", difficulty);
+                        enemyHandler.GetComponent<EnemyHandler>().UpdateDifficulty(difficulty);
+                    }
+                }
                 break;
             case "volume":
                 if (inputPieces.Length == 2 && menu.activeSelf == true)
@@ -148,9 +177,9 @@ public class LogicScript : MonoBehaviour
                 }
                 break;
             case "score":
-                if (inputPieces.Length >= 2 && deathScreen.activeSelf == true && scoreAdded == false)
+                if (deathScreen.activeSelf == true && scoreAdded == false)
                 {
-                    sb.AddToScoreboard(inputPieces[1], currentScore);
+                    sb.AddToScoreboard(playerName, currentScore, difficulty);
                     scoreAdded = true;
                 }
                 
@@ -158,20 +187,22 @@ public class LogicScript : MonoBehaviour
             default:
                 if (isDead == false)
                 {
-                    enemyHandler.GetComponent<EnemyHandler>().CheckInput(inputField.text);
+                    enemyHandler.GetComponent<EnemyHandler>().CheckInput(input);
                 }
                 break;
         }
 
         PlayerPrefs.SetString("settings", "volume colorR colorG colorB settings language");
         PlayerPrefs.Save();
-        
+    }
+
+    void ResetInputField()
+    {
         inputField.text = ""; // Setze das Input Field zurück
         inputField.ActivateInputField(); // Setze den Fokus zurück auf das Input Field
         inputField.Select(); // Wähle das Input Field aus, um sicherzustellen, dass der Cursor sichtbar bleibt
 
         hud.GetComponent<HUDScript>().UpdateText();
-        
     }
 
     void ChangeWeapon(string[] input)
@@ -222,6 +253,7 @@ public class LogicScript : MonoBehaviour
     void RestartGame()
     {
         player.GetComponent<PlayerScript>().ResetPlayer();
+        enemyHandler.GetComponent<EnemyHandler>().ResetEnemyHandler();
         EnemyBehavoir enemys = FindObjectOfType<EnemyBehavoir>();
         foreach (EnemyBehavoir enemy in FindObjectsOfType<EnemyBehavoir>())
         {
@@ -248,6 +280,7 @@ public class LogicScript : MonoBehaviour
             menu.SetActive(true);
             help.SetActive(false);
             credits.SetActive(false);
+            startScreen.SetActive(false);
             go.SetActive(true);
             hud.SetActive(true);
             currentInputUi.SetActive(true);
@@ -272,6 +305,7 @@ public class LogicScript : MonoBehaviour
         {
             AudioListener.volume = PlayerPrefs.GetFloat("volume");
         }
+
         if (PlayerPrefs.HasKey("language") == false)
         {
             PlayerPrefs.SetString("language", "en");
@@ -279,6 +313,15 @@ public class LogicScript : MonoBehaviour
         else
         {
             language = PlayerPrefs.GetString("language");
+        }
+
+        if (PlayerPrefs.HasKey("difficulty") == false)
+        {
+            PlayerPrefs.SetInt("difficulty", 2);
+        }
+        else
+        {
+            difficulty = PlayerPrefs.GetInt("difficulty");
         }
     }
 
@@ -303,7 +346,16 @@ public class LogicScript : MonoBehaviour
         if (isDead == false)
         {
             currentScore += score;
+            if (currentScore >= 5 && currentScore % 5 == 0)
+            {
+                scrap++;
+            }
         }
+    }
+
+    public void AddHexcores(int amount)
+    {
+        hexcores += amount;
     }
 
 
@@ -326,12 +378,27 @@ public class LogicScript : MonoBehaviour
 
     public string GetScoreboardAsString()
     {
-        return sb.GetScoreboardAsString();
+        return sb.GetScoreboardAsString(difficulty);
     }
 
     public string GetLanguage()
     {
         return language;
+    }
+
+    public int GetDifficulty()
+    {
+        return difficulty;
+    }
+
+    public int GetScrap()
+    {
+        return scrap;
+    }
+
+    public int GetHexcores()
+    {
+        return hexcores;
     }
 
 
@@ -357,6 +424,7 @@ public class LogicScript : MonoBehaviour
         prohibitedWords.Add("volume");
         prohibitedWords.Add("color");
         prohibitedWords.Add("language");
+        prohibitedWords.Add("difficulty");
     }
 
     public void QuitGame()
@@ -388,37 +456,43 @@ public class LogicScript : MonoBehaviour
 
 
         List<Entry> scoreboard = new List<Entry>();
+        List<Entry> sbMixed = new List<Entry>();
+        List<List<Entry>> scoreboards = new List<List<Entry>>();
+
+        int maxDiff;
+
+        public ScoreBoard (int maxDiff)
+        {
+            this.maxDiff = maxDiff;
+            FillScorebaords();
+        }
         
 
-        
-        public void AddToScoreboard(string name, int score)
+        public void AddToScoreboard(string name, int score, int difficulty)
         {
             Entry entry = new Entry(name, score);
-            scoreboard.Add(entry);
-            print("Raw: " + GetScoreboardAsString());
-            SortScoreboard();
-            print("Cut: " + GetScoreboardAsString());
+            scoreboards[difficulty].Add(entry);
+            SortScoreboard(difficulty);
             SaveScoreboard();
             
         }
 
-        void SortScoreboard()
+        void SortScoreboard(int difficulty)
         {
-            List<Entry> sortedList = scoreboard.OrderByDescending(x => x.score).ToList();
-            scoreboard = sortedList;
-            print("Sorted: " + GetScoreboardAsString());
-            if (scoreboard.Count > 5)
+            List<Entry> sortedList = scoreboards[difficulty].OrderByDescending(x => x.score).ToList();
+            scoreboards[difficulty] = sortedList;
+            if (scoreboards[difficulty].Count > 5)
             {
-                scoreboard = scoreboard.GetRange(0, 5);
+                scoreboards[difficulty] = scoreboards[difficulty].GetRange(0, 5);
             }
         }
 
-        public string GetScoreboardAsString()
+        public string GetScoreboardAsString(int difficulty)
         {
             string result = "";
-            foreach (Entry entry in scoreboard)
+            foreach (Entry entry in scoreboards[difficulty])
             {
-                result += " " + entry.name + ":  " + entry.score + "\n ";
+                result += entry.name + ":  " + entry.score + "\n";
             }
 
             return result;
@@ -426,27 +500,36 @@ public class LogicScript : MonoBehaviour
 
         void SaveScoreboard()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Entry>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<List<Entry>>));
 
-            string path = Application.persistentDataPath + "scoreboard.xml";
+            string path = Application.persistentDataPath + "scoreboards.xml";
             TextWriter writer = new StreamWriter(path);
-            serializer.Serialize(writer, scoreboard);
+            serializer.Serialize(writer, scoreboards);
             writer.Close();
         }
 
         public void LoadScoreboard()
         {
-            string path = Application.persistentDataPath + "scoreboard.xml";
+            string path = Application.persistentDataPath + "scoreboards.xml";
             if (File.Exists(path))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Entry>));
+                XmlSerializer serializer = new XmlSerializer(typeof(List<List<Entry>>));
                 TextReader reader = new StreamReader(path);
-                scoreboard = (List<Entry>)serializer.Deserialize(reader);
+                scoreboards = (List<List<Entry>>)serializer.Deserialize(reader);
                 reader.Close();
             }
             else
             {
-                scoreboard = new List<Entry>();
+                scoreboards = new List<List<Entry>>();
+                FillScorebaords();
+            }
+        }
+
+        void FillScorebaords()
+        {
+            for (int i = 0; i <= maxDiff; i++)
+            {
+                scoreboards.Add(new List<Entry>());
             }
         }
 
